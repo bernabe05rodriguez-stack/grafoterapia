@@ -12,9 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ═══════════════════════════════════════════════
-       VARIABLES & RESET
-    ═══════════════════════════════════════════════ */
     :root {
       --bg: #faf8f4;
       --bg-warm: #f5f0e8;
@@ -34,12 +31,10 @@
       --radius: 16px;
       --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
       --shadow-md: 0 8px 30px rgba(0,0,0,0.06);
-      --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
       --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; font-size: 16px; }
 
     body {
@@ -54,34 +49,19 @@
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
-    /* ═══════════════════════════════════════════════
-       ANIMATIONS
-    ═══════════════════════════════════════════════ */
+    /* ANIMATIONS */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
-    @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes drawLine {
-      from { stroke-dashoffset: 1000; }
-      to { stroke-dashoffset: 0; }
-    }
-
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
-
     @keyframes gentlePulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.02); }
@@ -92,1054 +72,372 @@
       transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.15s; }
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
-    .reveal-delay-4 { transition-delay: 0.6s; }
 
-    /* ═══════════════════════════════════════════════
-       NAVIGATION
-    ═══════════════════════════════════════════════ */
+    /* NAV */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 0 24px;
-      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+      transition: background var(--transition), box-shadow var(--transition);
     }
-
     nav.scrolled {
       background: rgba(250,248,244,0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       box-shadow: 0 1px 20px rgba(0,0,0,0.05);
     }
-
     .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; height: 72px;
     }
-
     .nav-logo {
-      font-family: var(--serif);
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.02em;
+      font-family: var(--serif); font-size: 1.6rem; font-weight: 600;
+      color: var(--accent); letter-spacing: 0.02em;
     }
-
     .nav-links { display: flex; gap: 32px; align-items: center; }
-
     .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-soft);
-      transition: color var(--transition);
-      letter-spacing: 0.02em;
+      font-size: 0.85rem; font-weight: 500; color: var(--text-soft);
+      transition: color var(--transition); letter-spacing: 0.02em;
     }
-
     .nav-links a:hover { color: var(--accent); }
-
     .nav-cta {
-      background: var(--accent) !important;
-      color: var(--white) !important;
-      padding: 10px 24px;
-      border-radius: 50px;
-      font-size: 0.85rem !important;
-      font-weight: 500 !important;
+      background: var(--accent) !important; color: var(--white) !important;
+      padding: 10px 24px; border-radius: 50px;
+      font-size: 0.85rem !important; font-weight: 500 !important;
       transition: background var(--transition), transform 0.2s !important;
     }
-
-    .nav-cta:hover {
-      background: var(--accent-light) !important;
-      transform: translateY(-1px);
-    }
-
+    .nav-cta:hover { background: var(--accent-light) !important; transform: translateY(-1px); }
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 8px;
-      z-index: 110;
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 8px; z-index: 110;
     }
-
     .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
+      display: block; width: 24px; height: 2px;
+      background: var(--text); border-radius: 2px;
       transition: transform 0.3s, opacity 0.3s;
     }
-
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-    /* ═══════════════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════════════ */
+    /* HERO */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 120px 24px 80px;
-      overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; padding: 120px 24px 80px; overflow: hidden;
     }
-
     .hero::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
+      content: ''; position: absolute; top: -20%; right: -10%;
+      width: 600px; height: 600px;
       background: radial-gradient(circle, rgba(143,166,143,0.12) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 8s ease-in-out infinite;
+      border-radius: 50%; animation: float 8s ease-in-out infinite;
     }
-
     .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -10%;
-      left: -5%;
-      width: 400px;
-      height: 400px;
+      content: ''; position: absolute; bottom: -10%; left: -5%;
+      width: 400px; height: 400px;
       background: radial-gradient(circle, rgba(123,107,74,0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 10s ease-in-out infinite reverse;
+      border-radius: 50%; animation: float 10s ease-in-out infinite reverse;
     }
-
-    .hero-content {
-      max-width: 800px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
+    .hero-content { max-width: 800px; text-align: center; position: relative; z-index: 1; }
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 20px;
-      background: var(--accent-soft);
-      border: 1px solid var(--accent-border);
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 32px;
-      animation: fadeIn 1s ease 0.3s both;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 20px; background: var(--accent-soft);
+      border: 1px solid var(--accent-border); border-radius: 50px;
+      font-size: 0.8rem; font-weight: 500; color: var(--accent);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 32px; animation: fadeIn 1s ease 0.3s both;
     }
-
-    .hero-badge svg {
-      width: 16px;
-      height: 16px;
-    }
-
+    .hero-badge svg { width: 16px; height: 16px; }
     .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      font-weight: 500;
-      line-height: 1.15;
-      color: var(--text);
-      margin-bottom: 24px;
-      animation: fadeInUp 1s ease 0.5s both;
+      font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 500; line-height: 1.15; color: var(--text);
+      margin-bottom: 24px; animation: fadeInUp 1s ease 0.5s both;
     }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
+    .hero h1 em { font-style: italic; color: var(--accent); }
     .hero-sub {
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
-      color: var(--text-soft);
-      max-width: 560px;
-      margin: 0 auto 40px;
-      line-height: 1.8;
-      font-weight: 300;
+      font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--text-soft);
+      max-width: 520px; margin: 0 auto 40px; line-height: 1.8; font-weight: 300;
       animation: fadeInUp 1s ease 0.7s both;
     }
-
     .hero-actions {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
       animation: fadeInUp 1s ease 0.9s both;
     }
-
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 36px;
-      border-radius: 50px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      font-family: var(--sans);
-      cursor: pointer;
-      border: none;
-      transition: all var(--transition);
-      letter-spacing: 0.01em;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 36px; border-radius: 50px; font-size: 0.95rem;
+      font-weight: 500; font-family: var(--sans); cursor: pointer;
+      border: none; transition: all var(--transition);
     }
-
-    .btn-primary {
-      background: var(--accent);
-      color: var(--white);
-    }
-
+    .btn-primary { background: var(--accent); color: var(--white); }
     .btn-primary:hover {
-      background: var(--accent-light);
-      transform: translateY(-2px);
+      background: var(--accent-light); transform: translateY(-2px);
       box-shadow: 0 12px 30px rgba(123,107,74,0.25);
     }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--accent);
-      border: 1.5px solid var(--accent-border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-    }
-
+    .btn-secondary { background: transparent; color: var(--accent); border: 1.5px solid var(--accent-border); }
+    .btn-secondary:hover { background: var(--accent-soft); border-color: var(--accent); }
     .btn svg { width: 20px; height: 20px; }
-
     .hero-scroll {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: float 3s ease-in-out infinite;
-      opacity: 0.4;
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      animation: float 3s ease-in-out infinite; opacity: 0.4;
     }
-
     .hero-scroll svg { width: 24px; height: 24px; stroke: var(--text-muted); }
 
-    /* ═══════════════════════════════════════════════
-       SVG HANDWRITING DECORATION
-    ═══════════════════════════════════════════════ */
-    .writing-decoration {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0.06;
-    }
-
-    .writing-decoration path {
-      stroke: var(--accent);
-      stroke-width: 2;
-      fill: none;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-    }
-
-    .writing-decoration.animated path {
-      animation: drawLine 3s ease forwards;
-    }
-
-    /* ═══════════════════════════════════════════════
-       SECTIONS GENERAL
-    ═══════════════════════════════════════════════ */
-    section { padding: 100px 24px; }
-
+    /* SECTIONS */
+    section { padding: 80px 24px; }
     .container { max-width: 1100px; margin: 0 auto; }
-
     .section-label {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      display: inline-block; font-size: 0.75rem; font-weight: 600;
+      color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
       margin-bottom: 16px;
     }
-
     .section-title {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 500;
-      line-height: 1.2;
-      margin-bottom: 20px;
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500; line-height: 1.2; margin-bottom: 20px;
     }
-
     .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--text-soft);
-      max-width: 600px;
-      line-height: 1.8;
-      font-weight: 300;
+      font-size: 1.05rem; color: var(--text-soft); max-width: 600px;
+      line-height: 1.8; font-weight: 300;
     }
 
-    /* ═══════════════════════════════════════════════
-       QUÉ ES — SPLIT LAYOUT
-    ═══════════════════════════════════════════════ */
+    /* QUÉ ES */
     #que-es { background: var(--white); }
-
     .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
     }
-
-    .split-visual {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     .calligraphy-card {
-      background: var(--bg);
-      border: 1px solid var(--accent-border);
-      border-radius: var(--radius);
-      padding: 48px 40px;
-      position: relative;
-      box-shadow: var(--shadow-md);
+      background: var(--bg); border: 1px solid var(--accent-border);
+      border-radius: var(--radius); padding: 48px 40px;
+      position: relative; box-shadow: var(--shadow-md);
     }
-
     .calligraphy-card::before {
-      content: '';
-      position: absolute;
-      top: -8px;
-      left: -8px;
-      right: -8px;
-      bottom: -8px;
-      border: 1px solid var(--accent-border);
-      border-radius: 20px;
-      opacity: 0.5;
+      content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px;
+      border: 1px solid var(--accent-border); border-radius: 20px; opacity: 0.5;
     }
-
     .calligraphy-card blockquote {
-      font-family: var(--serif);
-      font-size: 1.6rem;
-      font-style: italic;
-      line-height: 1.5;
-      color: var(--accent);
-      position: relative;
+      font-family: var(--serif); font-size: 1.6rem; font-style: italic;
+      line-height: 1.5; color: var(--accent); position: relative;
     }
-
     .calligraphy-card blockquote::before {
-      content: '"';
-      font-size: 4rem;
-      position: absolute;
-      top: -20px;
-      left: -10px;
-      color: var(--accent-light);
-      opacity: 0.3;
-      font-family: var(--serif);
+      content: '"'; font-size: 4rem; position: absolute; top: -20px; left: -10px;
+      color: var(--accent-light); opacity: 0.3; font-family: var(--serif);
     }
-
     .calligraphy-card cite {
-      display: block;
-      margin-top: 16px;
-      font-size: 0.85rem;
-      font-style: normal;
-      color: var(--text-muted);
-      font-family: var(--sans);
+      display: block; margin-top: 16px; font-size: 0.85rem;
+      font-style: normal; color: var(--text-muted); font-family: var(--sans);
     }
-
-    .feature-list {
-      list-style: none;
-      margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .feature-list li {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
+    .feature-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
+    .feature-list li { display: flex; gap: 14px; align-items: flex-start; }
     .feature-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--accent-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
+    .feature-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; }
+    .feature-text h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
+    .feature-text p { font-size: 0.85rem; color: var(--text-soft); line-height: 1.6; }
 
-    .feature-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; }
-
-    .feature-text h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .feature-text p {
-      font-size: 0.88rem;
-      color: var(--text-soft);
-      line-height: 1.6;
-    }
-
-    /* ═══════════════════════════════════════════════
-       ORIGENES — TIMELINE
-    ═══════════════════════════════════════════════ */
-    #origenes {
-      background: var(--bg);
-      position: relative;
-    }
-
-    .timeline {
-      margin-top: 48px;
-      position: relative;
-      padding-left: 40px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 15px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--accent-border), var(--sage-soft));
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-bottom: 40px;
-    }
-
-    .timeline-item:last-child { padding-bottom: 0; }
-
-    .timeline-dot {
-      position: absolute;
-      left: -33px;
-      top: 6px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 3px solid var(--bg);
-      box-shadow: 0 0 0 2px var(--accent-border);
-    }
-
-    .timeline-date {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .timeline-item h4 {
-      font-family: var(--serif);
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .timeline-item p {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      line-height: 1.7;
-      max-width: 500px;
-    }
-
-    /* ═══════════════════════════════════════════════
-       CÓMO FUNCIONA — THE 12 MOVEMENTS
-    ═══════════════════════════════════════════════ */
-    #como-funciona { background: var(--white); }
-
-    .movements-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .movement-card {
-      background: var(--bg);
-      border: 1px solid var(--accent-border);
-      border-radius: var(--radius);
-      padding: 32px;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .movement-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .movement-card .direction {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .movement-card .direction svg {
-      width: 32px;
-      height: 32px;
-      stroke: var(--accent);
-      fill: none;
-      stroke-width: 1.5;
-    }
-
-    .movement-card .direction span {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .movement-card p {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      line-height: 1.7;
-    }
-
-    .fundamento-box {
-      background: linear-gradient(135deg, var(--accent-soft), var(--sage-soft));
-      border: 1px solid var(--accent-border);
-      border-radius: var(--radius);
-      padding: 40px;
-      margin-bottom: 48px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .fundamento-box::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(123,107,74,0.06), transparent 70%);
-      border-radius: 50%;
-    }
-
-    .fundamento-box p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      position: relative;
-      z-index: 1;
-    }
-
-    .fundamento-box p strong {
-      color: var(--accent);
-    }
-
-    /* ═══════════════════════════════════════════════
-       PROCESO — STEPS
-    ═══════════════════════════════════════════════ */
+    /* PROCESO */
     #proceso { background: var(--bg-warm); }
-
     .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 48px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px;
     }
-
     .step-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 36px 28px;
-      text-align: center;
+      background: var(--white); border-radius: var(--radius);
+      padding: 32px 24px; text-align: center;
       border: 1px solid var(--accent-border);
       transition: transform var(--transition), box-shadow var(--transition);
-      position: relative;
     }
-
-    .step-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
+    .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
     .step-number {
-      font-family: var(--serif);
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--accent);
-      opacity: 0.2;
-      line-height: 1;
-      margin-bottom: 16px;
+      font-family: var(--serif); font-size: 2.5rem; font-weight: 700;
+      color: var(--accent); opacity: 0.2; line-height: 1; margin-bottom: 12px;
     }
-
     .step-card h4 {
-      font-family: var(--serif);
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 12px;
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 10px;
     }
+    .step-card p { font-size: 0.83rem; color: var(--text-soft); line-height: 1.7; }
 
-    .step-card p {
-      font-size: 0.85rem;
-      color: var(--text-soft);
-      line-height: 1.7;
-    }
-
-    /* ═══════════════════════════════════════════════
-       PARA QUIÉN — AUDIENCE CARDS
-    ═══════════════════════════════════════════════ */
+    /* PARA QUIÉN */
     #para-quien { background: var(--white); }
-
     .audience-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;
     }
-
     .audience-card {
-      background: var(--bg);
-      border: 1px solid var(--accent-border);
-      border-radius: var(--radius);
-      padding: 40px 32px;
-      text-align: center;
+      background: var(--bg); border: 1px solid var(--accent-border);
+      border-radius: var(--radius); padding: 36px 28px; text-align: center;
       transition: transform var(--transition), box-shadow var(--transition);
     }
-
-    .audience-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
+    .audience-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
     .audience-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--accent-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
+      width: 56px; height: 56px; border-radius: 50%; background: var(--accent-soft);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
     }
-
-    .audience-icon svg { width: 28px; height: 28px; stroke: var(--accent); fill: none; }
-
+    .audience-icon svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; }
     .audience-card h4 {
-      font-family: var(--serif);
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 8px;
+      font-family: var(--serif); font-size: 1.25rem; font-weight: 600; margin-bottom: 6px;
     }
-
     .audience-card .age {
-      font-size: 0.8rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 16px;
-      letter-spacing: 0.05em;
+      font-size: 0.78rem; color: var(--accent); font-weight: 500;
+      margin-bottom: 12px; letter-spacing: 0.05em;
     }
-
-    .audience-card p {
-      font-size: 0.88rem;
-      color: var(--text-soft);
-      line-height: 1.7;
-    }
-
-    .audience-card ul {
-      list-style: none;
-      margin-top: 16px;
-      text-align: left;
-    }
-
+    .audience-card ul { list-style: none; margin-top: 12px; text-align: left; }
     .audience-card ul li {
-      font-size: 0.85rem;
-      color: var(--text-soft);
-      padding: 6px 0;
+      font-size: 0.83rem; color: var(--text-soft); padding: 5px 0;
       border-bottom: 1px solid rgba(0,0,0,0.04);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      display: flex; align-items: center; gap: 8px;
     }
-
     .audience-card ul li::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--sage);
-      flex-shrink: 0;
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--sage); flex-shrink: 0;
     }
 
-    /* ═══════════════════════════════════════════════
-       BENEFITS — TAGS
-    ═══════════════════════════════════════════════ */
-    .benefits-section {
-      background: var(--bg);
-      text-align: center;
-    }
-
-    .benefits-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 40px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .benefit-tag {
-      padding: 12px 24px;
-      background: var(--white);
-      border: 1px solid var(--accent-border);
-      border-radius: 50px;
-      font-size: 0.88rem;
-      color: var(--text);
-      transition: all var(--transition);
-    }
-
-    .benefit-tag:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .benefit-tag svg {
-      display: inline;
-      width: 16px;
-      height: 16px;
-      vertical-align: -3px;
-      margin-right: 6px;
-      stroke: var(--sage);
-      fill: none;
-    }
-
-    .benefits-note {
-      margin-top: 32px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    /* ═══════════════════════════════════════════════
-       SOBRE MÍ
-    ═══════════════════════════════════════════════ */
-    #sobre-mi { background: var(--white); }
-
+    /* SOBRE MÍ */
+    #sobre-mi { background: var(--bg); }
     .about-layout {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 60px;
-      align-items: start;
-      margin-top: 48px;
+      display: grid; grid-template-columns: 280px 1fr; gap: 50px;
+      align-items: start; margin-top: 40px;
     }
-
     .about-photo {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: var(--radius);
-      border: 1px solid var(--accent-border);
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
+      width: 100%; aspect-ratio: 3/4; border-radius: var(--radius);
+      border: 1px solid var(--accent-border); position: relative;
+      overflow: hidden; box-shadow: var(--shadow-md);
     }
-
     .about-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
+      width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
     }
-
     .about-text h3 {
-      font-family: var(--serif);
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 8px;
+      font-family: var(--serif); font-size: 1.7rem; font-weight: 600; margin-bottom: 6px;
     }
-
     .about-text .credential {
-      font-size: 0.88rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 24px;
-      display: block;
+      font-size: 0.85rem; color: var(--accent); font-weight: 500;
+      margin-bottom: 20px; display: block;
     }
-
     .about-text p {
-      font-size: 0.95rem;
-      color: var(--text-soft);
-      line-height: 1.8;
-      margin-bottom: 16px;
+      font-size: 0.92rem; color: var(--text-soft); line-height: 1.8; margin-bottom: 14px;
     }
-
-    .credential-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
+    .credential-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
     .credential-badge {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      background: var(--accent-soft);
-      border: 1px solid var(--accent-border);
-      border-radius: 50px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--accent);
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 14px; background: var(--accent-soft);
+      border: 1px solid var(--accent-border); border-radius: 50px;
+      font-size: 0.78rem; font-weight: 500; color: var(--accent);
     }
+    .credential-badge svg { width: 14px; height: 14px; stroke: var(--accent); fill: none; }
 
-    .credential-badge svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; }
-
-    /* ═══════════════════════════════════════════════
-       TESTIMONIALS
-    ═══════════════════════════════════════════════ */
-    #testimonios { background: var(--bg-warm); }
-
+    /* TESTIMONIOS */
+    #testimonios { background: var(--white); }
     .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;
     }
-
     .testimonial-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 36px 28px;
-      border: 1px solid var(--accent-border);
+      background: var(--bg); border-radius: var(--radius);
+      padding: 32px 24px; border: 1px solid var(--accent-border);
       transition: transform var(--transition);
     }
-
     .testimonial-card:hover { transform: translateY(-3px); }
-
-    .testimonial-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 16px;
-    }
-
-    .testimonial-stars svg { width: 16px; height: 16px; fill: var(--accent-light); }
-
+    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .testimonial-stars svg { width: 14px; height: 14px; fill: var(--accent-light); }
     .testimonial-card p {
-      font-size: 0.92rem;
-      color: var(--text-soft);
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 20px;
+      font-size: 0.88rem; color: var(--text-soft); line-height: 1.7;
+      font-style: italic; margin-bottom: 16px;
     }
+    .testimonial-author { font-size: 0.83rem; font-weight: 600; color: var(--text); }
+    .testimonial-detail { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
 
-    .testimonial-author {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .testimonial-detail {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    /* ═══════════════════════════════════════════════
-       CTA / CONTACTO
-    ═══════════════════════════════════════════════ */
+    /* CONTACTO */
     #contacto {
       background: linear-gradient(135deg, #3a3528, #2c2c28);
-      color: var(--white);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      color: var(--white); text-align: center; position: relative; overflow: hidden;
     }
-
     #contacto::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -20%;
-      width: 600px;
-      height: 600px;
+      content: ''; position: absolute; top: -50%; left: -20%;
+      width: 600px; height: 600px;
       background: radial-gradient(circle, rgba(143,166,143,0.08), transparent 70%);
       border-radius: 50%;
     }
-
     #contacto .section-label { color: var(--accent-light); }
-
     #contacto .section-title { color: var(--white); }
-
-    #contacto .section-subtitle {
-      color: rgba(255,255,255,0.65);
-      margin: 0 auto 40px;
-    }
-
-    .contact-cta {
-      position: relative;
-      z-index: 1;
-    }
-
+    #contacto .section-subtitle { color: rgba(255,255,255,0.65); margin: 0 auto 40px; }
+    .contact-cta { position: relative; z-index: 1; }
     .whatsapp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 20px 48px;
-      background: #25D366;
-      color: var(--white);
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      font-family: var(--sans);
-      border: none;
-      cursor: pointer;
-      transition: all var(--transition);
-      box-shadow: 0 8px 30px rgba(37,211,102,0.3);
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 18px 44px; background: #25D366; color: var(--white);
+      border-radius: 50px; font-size: 1.05rem; font-weight: 600;
+      font-family: var(--sans); border: none; cursor: pointer;
+      transition: all var(--transition); box-shadow: 0 8px 30px rgba(37,211,102,0.3);
     }
-
     .whatsapp-btn:hover {
-      background: #20bd5a;
-      transform: translateY(-3px);
+      background: #20bd5a; transform: translateY(-3px);
       box-shadow: 0 14px 40px rgba(37,211,102,0.4);
     }
+    .whatsapp-btn svg { width: 22px; height: 22px; fill: currentColor; }
+    .contact-info { margin-top: 28px; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
 
-    .whatsapp-btn svg { width: 24px; height: 24px; fill: currentColor; }
-
-    .contact-info {
-      margin-top: 32px;
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.45);
-    }
-
-    /* ═══════════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════════ */
+    /* FOOTER */
     footer {
-      background: #1e1e1c;
-      padding: 32px 24px;
-      text-align: center;
+      background: #1e1e1c; padding: 28px 24px; text-align: center;
     }
-
     .footer-disclaimer {
-      max-width: 600px;
-      margin: 0 auto 16px;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.35);
-      line-height: 1.6;
+      max-width: 600px; margin: 0 auto 12px; font-size: 0.75rem;
+      color: rgba(255,255,255,0.35); line-height: 1.6;
     }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
 
-    .footer-copy {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.25);
-    }
-
-    /* ═══════════════════════════════════════════════
-       FLOATING WHATSAPP BUTTON
-    ═══════════════════════════════════════════════ */
+    /* WHATSAPP FLOAT */
     .whatsapp-float {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 60px;
-      height: 60px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      z-index: 90;
+      position: fixed; bottom: 28px; right: 28px; width: 58px; height: 58px;
+      background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 90;
       transition: transform var(--transition), box-shadow var(--transition);
       animation: gentlePulse 3s ease-in-out infinite;
     }
-
     .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 30px rgba(37,211,102,0.5);
-      animation: none;
+      transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); animation: none;
     }
+    .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
 
-    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
-
-    /* ═══════════════════════════════════════════════
-       MOBILE RESPONSIVE
-    ═══════════════════════════════════════════════ */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
       .split { grid-template-columns: 1fr; gap: 40px; }
       .split-visual { order: -1; }
       .steps { grid-template-columns: repeat(2, 1fr); }
-      .movements-grid { grid-template-columns: 1fr; }
       .about-layout { grid-template-columns: 1fr; }
-      .about-photo { max-width: 300px; }
+      .about-photo { max-width: 280px; }
     }
 
     @media (max-width: 768px) {
-      section { padding: 72px 20px; }
-
-      .nav-links { 
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(250,248,244,0.98);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 24px;
-        z-index: 105;
+      section { padding: 60px 20px; }
+      .nav-links {
+        display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(250,248,244,0.98); backdrop-filter: blur(20px);
+        flex-direction: column; align-items: center; justify-content: center;
+        gap: 24px; z-index: 105;
       }
-
       .nav-links.open { display: flex; }
-
       .nav-links a { font-size: 1.1rem; }
-
       .hamburger { display: flex; }
-
       .audience-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
-      .hero { min-height: auto; padding: 140px 20px 80px; }
-
+      .hero { min-height: auto; padding: 130px 20px 70px; }
       .calligraphy-card { padding: 32px 24px; }
       .calligraphy-card blockquote { font-size: 1.3rem; }
-
-      .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
-      .whatsapp-float svg { width: 26px; height: 26px; }
+      .whatsapp-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+      .whatsapp-float svg { width: 24px; height: 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════
-       NAVIGATION
-  ═══════════════════════════════════════════════ -->
+  <!-- NAV -->
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#" class="nav-logo">Grafoterapia</a>
       <div class="nav-links" id="navLinks">
         <a href="#que-es" onclick="closeMenu()">Qué es</a>
-        <a href="#como-funciona" onclick="closeMenu()">Cómo funciona</a>
         <a href="#proceso" onclick="closeMenu()">El proceso</a>
         <a href="#para-quien" onclick="closeMenu()">Para quién</a>
         <a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a>
@@ -1151,9 +449,7 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════════════ -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge">
@@ -1161,7 +457,7 @@
         Reeducación Gráfica
       </div>
       <h1>Transformá tu <em>escritura</em>,<br>transformá tu <em>vida</em></h1>
-      <p class="hero-sub">La grafoterapia es una técnica terapéutica que, a través de ejercicios de escritura dirigidos, puede ayudar a mejorar hábitos, fortalecer la autoconfianza y acompañar tu bienestar emocional.</p>
+      <p class="hero-sub">A través de ejercicios dirigidos, la grafoterapia ayuda a mejorar hábitos, fortalecer la autoconfianza y acompañar tu bienestar emocional.</p>
       <div class="hero-actions">
         <a href="#contacto" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -1175,42 +471,31 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════
-       QUÉ ES
-  ═══════════════════════════════════════════════ -->
+  <!-- QUÉ ES -->
   <section id="que-es">
     <div class="container">
       <div class="split">
         <div class="split-text">
           <span class="section-label reveal">Qué es la grafoterapia</span>
-          <h2 class="section-title reveal reveal-delay-1">La escritura como espejo del alma</h2>
-          <p class="section-subtitle reveal reveal-delay-2">La grafoterapia es la reeducación terapéutica de la escritura. Parte de un principio sencillo pero poderoso: tu letra refleja tu mundo interior — y al transformarla conscientemente, podés generar cambios reales en tu forma de sentir y actuar.</p>
+          <h2 class="section-title reveal reveal-delay-1">Tu letra refleja tu mundo interior</h2>
+          <p class="section-subtitle reveal reveal-delay-2">Al transformar conscientemente tu escritura, podés generar cambios reales en tu forma de sentir y actuar. Es una técnica no invasiva, sin efectos nocivos, que complementa otros tratamientos.</p>
           <ul class="feature-list">
             <li class="reveal reveal-delay-2">
-              <div class="feature-icon">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              </div>
-              <div class="feature-text">
-                <h4>No invasiva, sin efectos nocivos</h4>
-                <p>Una técnica suave que complementa otros tratamientos sin contraindicaciones.</p>
-              </div>
-            </li>
-            <li class="reveal reveal-delay-3">
               <div class="feature-icon">
                 <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
               </div>
               <div class="feature-text">
                 <h4>Base grafológica profesional</h4>
-                <p>La grafología analiza; la grafoterapia interviene. Es su rama aplicada, con formación oficial en Argentina.</p>
+                <p>La grafología analiza; la grafoterapia interviene con formación oficial.</p>
               </div>
             </li>
-            <li class="reveal reveal-delay-4">
+            <li class="reveal reveal-delay-3">
               <div class="feature-icon">
                 <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
               </div>
               <div class="feature-text">
                 <h4>Personalizada y progresiva</h4>
-                <p>Cada plan es único, con ejercicios adaptados a tu perfil y evolución.</p>
+                <p>Cada plan es único, adaptado a tu perfil y evolución.</p>
               </div>
             </li>
           </ul>
@@ -1225,136 +510,45 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════
-       ORÍGENES
-  ═══════════════════════════════════════════════ -->
-  <section id="origenes">
-    <div class="container">
-      <span class="section-label reveal">Orígenes</span>
-      <h2 class="section-title reveal reveal-delay-1">Una tradición con siglos de historia</h2>
-      <p class="section-subtitle reveal reveal-delay-2">Desde la antigüedad, la humanidad ha intuido la conexión entre escritura y personalidad.</p>
-
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Antigüedad</div>
-          <h4>Aristóteles</h4>
-          <p>Ya afirmaba que "la escritura revela el carácter", sentando la base filosófica de lo que siglos después se sistematizaría.</p>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">1932 – 1948</div>
-          <h4>Dr. Ménard · Sorbona, Francia</h4>
-          <p>Discípulo de Pierre Janet, empezó a aplicar la técnica en 1932 y publicó "La page d'écriture" con experimentos pioneros sobre reeducación escritural.</p>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Escuela francesa</div>
-          <h4>Hélène de Gobineau</h4>
-          <p>Desde la escuela de Ajuriaguerra, sistematizó ejercicios específicos para niños con disgrafía, estableciendo protocolos que se usan hasta hoy.</p>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Escuela belga</div>
-          <h4>Henri Callewaert</h4>
-          <p>Neurólogo que diseñó la reeducación escritural basada en rectas, guirnaldas y bucles, trabajando la postura y el movimiento del brazo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       CÓMO FUNCIONA
-  ═══════════════════════════════════════════════ -->
-  <section id="como-funciona">
-    <div class="container">
-      <span class="section-label reveal">Cómo funciona</span>
-      <h2 class="section-title reveal reveal-delay-1">El camino inverso: del trazo al cerebro</h2>
-
-      <div class="fundamento-box reveal reveal-delay-2">
-        <p>El acto de escribir nace en el cerebro. La grafoterapia hace el <strong>camino inverso</strong>: al modificar conscientemente el trazo, se actúa sobre los mecanismos cerebrales hasta que el cambio se convierte en hábito. Se trabaja sobre <strong>12 movimientos básicos</strong>, cada uno asociado a un aspecto de la conducta.</p>
-      </div>
-
-      <div class="movements-grid">
-        <div class="movement-card reveal">
-          <div class="direction">
-            <svg viewBox="0 0 48 48"><line x1="24" y1="38" x2="24" y2="10"/><polyline points="16 18 24 10 32 18"/></svg>
-            <span>Ascendentes</span>
-          </div>
-          <p>Vinculados a los ideales, las ambiciones y la espiritualidad. Trabajarlos puede ayudar a fortalecer la motivación y la proyección personal.</p>
-        </div>
-        <div class="movement-card reveal reveal-delay-1">
-          <div class="direction">
-            <svg viewBox="0 0 48 48"><line x1="24" y1="10" x2="24" y2="38"/><polyline points="16 30 24 38 32 30"/></svg>
-            <span>Descendentes</span>
-          </div>
-          <p>Asociados a lo material, lo físico y lo concreto. Su trabajo se relaciona con el arraigo, la estabilidad y la conexión con lo tangible.</p>
-        </div>
-        <div class="movement-card reveal reveal-delay-2">
-          <div class="direction">
-            <svg viewBox="0 0 48 48"><line x1="38" y1="24" x2="10" y2="24"/><polyline points="18 16 10 24 18 32"/></svg>
-            <span>Hacia la izquierda</span>
-          </div>
-          <p>Relacionados con la reflexión, la introspección y el pasado. Permiten trabajar aspectos de la memoria y el autoconocimiento.</p>
-        </div>
-        <div class="movement-card reveal reveal-delay-3">
-          <div class="direction">
-            <svg viewBox="0 0 48 48"><line x1="10" y1="24" x2="38" y2="24"/><polyline points="30 16 38 24 30 32"/></svg>
-            <span>Hacia la derecha</span>
-          </div>
-          <p>Ligados a la extraversión, la comunicación y la proyección al futuro. Se trabajan para fomentar la apertura y la acción.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       EL PROCESO
-  ═══════════════════════════════════════════════ -->
+  <!-- EL PROCESO -->
   <section id="proceso">
     <div class="container">
       <div style="text-align:center;">
         <span class="section-label reveal">El proceso</span>
         <h2 class="section-title reveal reveal-delay-1">Cómo trabajo</h2>
-        <p class="section-subtitle reveal reveal-delay-2" style="margin: 0 auto;">Un acompañamiento personalizado con etapas claras y un compromiso gradual.</p>
       </div>
-
       <div class="steps">
         <div class="step-card reveal">
           <div class="step-number">01</div>
           <h4>Primera sesión</h4>
-          <p>Se toma una muestra escritural de una carilla, más de 15 renglones, y dibujos proyectivos. A partir de allí se detecta personalidad, conflictos y puntos a trabajar.</p>
+          <p>Se toma una muestra escritural de una carilla, más de 15 renglones, y dibujos proyectivos. Se detecta personalidad, conflictos y puntos a trabajar.</p>
         </div>
         <div class="step-card reveal reveal-delay-1">
           <div class="step-number">02</div>
           <h4>Ejercicios guiados</h4>
-          <p>Los tres primeros encuentros son seguidos y luego se espacian a quincenales. El trabajo en casa es fundamental: 10 minutos aproximadamente de práctica diaria con los ejercicios indicados.</p>
+          <p>Los tres primeros encuentros son seguidos, luego quincenales. En casa: 10 minutos diarios de práctica.</p>
         </div>
         <div class="step-card reveal reveal-delay-2">
           <div class="step-number">03</div>
           <h4>Seguimiento</h4>
-          <p>Se toman muestras periódicas para comparar la evolución contra el escrito inicial. Cada nueva muestra es un espejo del camino recorrido.</p>
+          <p>Muestras periódicas para comparar la evolución. Cada nueva muestra refleja el camino recorrido.</p>
         </div>
         <div class="step-card reveal reveal-delay-3">
           <div class="step-number">04</div>
           <h4>Consolidación</h4>
-          <p>La duración del proceso depende de cada caso y cada persona. Los encuentros son quincenales (salvo los tres primeros) hasta que los nuevos hábitos gráficos se consolidan.</p>
+          <p>La duración depende de cada caso y persona, hasta que los nuevos hábitos gráficos se consolidan.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════
-       PARA QUIÉN
-  ═══════════════════════════════════════════════ -->
+  <!-- PARA QUIÉN -->
   <section id="para-quien">
     <div class="container">
       <div style="text-align:center;">
         <span class="section-label reveal">Para quién</span>
-        <h2 class="section-title reveal reveal-delay-1">Un acompañamiento para cada etapa</h2>
-        <p class="section-subtitle reveal reveal-delay-2" style="margin: 0 auto;">La grafoterapia se adapta a cualquier edad, con enfoques específicos para cada momento de la vida.</p>
+        <h2 class="section-title reveal reveal-delay-1">Para cada etapa de la vida</h2>
       </div>
-
       <div class="audience-grid">
         <div class="audience-card reveal">
           <div class="audience-icon">
@@ -1362,12 +556,10 @@
           </div>
           <h4>Niños</h4>
           <div class="age">Desde los 4 años</div>
-          <p>Reeducación gráfica orientada a la mejora de la escritura y el acompañamiento del desarrollo desde temprana edad.</p>
           <ul>
             <li>Mejora de la motricidad gráfica</li>
-            <li>Acompañamiento en dificultades de escritura</li>
-            <li>Apoyo a la concentración</li>
-            <li>Fortalecimiento de la autoestima</li>
+            <li>Dificultades de escritura</li>
+            <li>Concentración y autoestima</li>
           </ul>
         </div>
         <div class="audience-card reveal reveal-delay-1">
@@ -1376,12 +568,10 @@
           </div>
           <h4>Adolescentes</h4>
           <div class="age">14 a 18 años</div>
-          <p>Apoyo en una etapa de cambio, ayudando a fortalecer la identidad y la gestión emocional.</p>
           <ul>
             <li>Gestión de la ansiedad</li>
-            <li>Fortalecimiento de la seguridad personal</li>
-            <li>Mejora de hábitos de estudio</li>
-            <li>Autoconocimiento</li>
+            <li>Seguridad y autoconocimiento</li>
+            <li>Hábitos de estudio</li>
           </ul>
         </div>
         <div class="audience-card reveal reveal-delay-2">
@@ -1390,11 +580,9 @@
           </div>
           <h4>Adultos</h4>
           <div class="age">Desde los 18 años</div>
-          <p>Un camino de bienestar y autoconocimiento, complementario a otros tratamientos.</p>
           <ul>
-            <li>Bienestar y autoconocimiento</li>
-            <li>Mejora de la autoconfianza</li>
-            <li>Acompañamiento de la concentración</li>
+            <li>Autoconfianza y bienestar</li>
+            <li>Concentración</li>
             <li>Complemento terapéutico</li>
           </ul>
         </div>
@@ -1402,50 +590,18 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════
-       BENEFICIOS
-  ═══════════════════════════════════════════════ -->
-  <section class="benefits-section">
-    <div class="container">
-      <span class="section-label reveal">Beneficios</span>
-      <h2 class="section-title reveal reveal-delay-1">La escritura como herramienta de bienestar</h2>
-      <p class="section-subtitle reveal reveal-delay-2" style="margin: 0 auto; text-align: center;">Una técnica suave y no invasiva que puede acompañar procesos de mejora personal.</p>
-
-      <div class="benefits-tags">
-        <span class="benefit-tag reveal"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mejora de la escritura</span>
-        <span class="benefit-tag reveal">Autoconocimiento</span>
-        <span class="benefit-tag reveal">Concentración</span>
-        <span class="benefit-tag reveal">Autoconfianza</span>
-        <span class="benefit-tag reveal">Gestión emocional</span>
-        <span class="benefit-tag reveal">Motricidad gráfica</span>
-        <span class="benefit-tag reveal">Hábitos de estudio</span>
-        <span class="benefit-tag reveal">Bienestar personal</span>
-        <span class="benefit-tag reveal">Sin efectos nocivos</span>
-        <span class="benefit-tag reveal">Complemento terapéutico</span>
-      </div>
-      <p class="benefits-note reveal">La grafoterapia es un acompañamiento que complementa, nunca sustituye, la atención médica o psicológica profesional.</p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       SOBRE MÍ
-  ═══════════════════════════════════════════════ -->
+  <!-- SOBRE MÍ -->
   <section id="sobre-mi">
     <div class="container">
-      <span class="section-label reveal">Sobre mí</span>
-      <h2 class="section-title reveal reveal-delay-1">Formación y trayectoria</h2>
-
       <div class="about-layout">
         <div class="about-photo reveal">
           <img src="adriana.jpg" alt="Adriana Sánchez — Grafoterapeuta" loading="lazy">
         </div>
         <div class="about-text reveal reveal-delay-1">
+          <span class="section-label">Sobre mí</span>
           <h3>Adriana Sánchez</h3>
           <span class="credential">Docente Nivel Primario · Grafóloga · Grafoterapeuta</span>
-          <p>Especialista en infanto juvenil y adultos, con formación en selección de personal y grafología forense. Me dedico a acompañar a personas de todas las edades en su proceso de autoconocimiento y bienestar a través de la reeducación gráfica.</p>
-          <p>Cada persona tiene una historia que se refleja en su escritura. Mi trabajo es leerla, comprenderla y guiar un proceso de transformación personalizado, respetuoso y gradual.</p>
-          <p>Creo profundamente en el poder de la escritura como herramienta de cambio y en la importancia de un acompañamiento cálido y profesional.</p>
-
+          <p>Especialista en infanto juvenil y adultos. Acompaño a personas de todas las edades en su proceso de autoconocimiento y bienestar a través de la reeducación gráfica.</p>
           <div class="credential-badges">
             <span class="credential-badge">
               <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 10 3 12 0v-5"/></svg>
@@ -1457,7 +613,7 @@
             </span>
             <span class="credential-badge">
               <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              Especialidad Infanto juvenil y adultos
+              Esp. Infanto juvenil y adultos
             </span>
             <span class="credential-badge">
               <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
@@ -1473,17 +629,13 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════
-       TESTIMONIOS
-  ═══════════════════════════════════════════════ -->
+  <!-- TESTIMONIOS -->
   <section id="testimonios">
     <div class="container">
       <div style="text-align:center;">
         <span class="section-label reveal">Testimonios</span>
-        <h2 class="section-title reveal reveal-delay-1">Experiencias que hablan por sí solas</h2>
-        <p class="section-subtitle reveal reveal-delay-2" style="margin: 0 auto;">Historias reales de personas que encontraron en la grafoterapia un acompañamiento valioso.</p>
+        <h2 class="section-title reveal reveal-delay-1">Experiencias reales</h2>
       </div>
-
       <div class="testimonials-grid">
         <div class="testimonial-card reveal">
           <div class="testimonial-stars">
@@ -1493,7 +645,7 @@
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p>"Llevé a mi hijo de 9 años porque le costaba mucho la escritura en la escuela. En pocos meses mejoró notablemente, y además lo vi más seguro de sí mismo."</p>
+          <p>"Llevé a mi hijo de 9 años porque le costaba la escritura. En pocos meses mejoró notablemente y lo vi más seguro de sí mismo."</p>
           <div class="testimonial-author">María L.</div>
           <div class="testimonial-detail">Mamá de paciente de 9 años</div>
         </div>
@@ -1505,7 +657,7 @@
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p>"Empecé sin saber bien qué esperar y fue una experiencia reveladora. Los ejercicios de escritura me ayudaron a ser más consciente de mis propios patrones."</p>
+          <p>"Fue una experiencia reveladora. Los ejercicios me ayudaron a ser más consciente de mis propios patrones."</p>
           <div class="testimonial-author">Carolina S.</div>
           <div class="testimonial-detail">Adulta, 34 años</div>
         </div>
@@ -1517,7 +669,7 @@
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p>"Lo que más valoro es el enfoque humano y profesional. Sentí un acompañamiento real desde la primera sesión, sin juicios ni presiones."</p>
+          <p>"Lo que más valoro es el enfoque humano y profesional. Acompañamiento real desde la primera sesión."</p>
           <div class="testimonial-author">Roberto M.</div>
           <div class="testimonial-detail">Adulto, 48 años</div>
         </div>
@@ -1525,68 +677,47 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════
-       CONTACTO / CTA
-  ═══════════════════════════════════════════════ -->
+  <!-- CONTACTO -->
   <section id="contacto">
     <div class="container contact-cta">
       <span class="section-label reveal">Contacto</span>
       <h2 class="section-title reveal reveal-delay-1">¿Querés saber más?</h2>
-      <p class="section-subtitle reveal reveal-delay-2">Escribime por WhatsApp y agendamos una primera conversación sin compromiso. Estoy para acompañarte.</p>
-
+      <p class="section-subtitle reveal reveal-delay-2">Escribime por WhatsApp y agendamos una primera conversación sin compromiso.</p>
       <div class="reveal reveal-delay-3">
-        <!-- WHATSAPP_NUMBER: reemplazar con el número real (sin +, sin espacios) -->
-        <a href="https://wa.me/5492615181788?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20la%20grafoterapia" class="whatsapp-btn" id="whatsappBtn" target="_blank" rel="noopener">
+        <a href="https://wa.me/5492615181788?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20la%20grafoterapia" class="whatsapp-btn" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Escribir por WhatsApp
         </a>
       </div>
-
-      <p class="contact-info reveal reveal-delay-4">Primera conversación sin cargo · Respuesta en menos de 24 hs</p>
+      <p class="contact-info reveal reveal-delay-3">Primera conversación sin cargo · Respuesta en menos de 24 hs</p>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer>
-    <p class="footer-disclaimer">La grafoterapia es una técnica de acompañamiento y reeducación gráfica. No sustituye la atención médica ni psicológica profesional. Ante cualquier duda sobre tu salud, consultá siempre con un profesional habilitado.</p>
+    <p class="footer-disclaimer">La grafoterapia es una técnica de acompañamiento y reeducación gráfica. No sustituye la atención médica ni psicológica profesional.</p>
     <p class="footer-copy">© 2026 · Grafoterapia · Todos los derechos reservados</p>
   </footer>
 
-  <!-- ═══════════════════════════════════════════════
-       FLOATING WHATSAPP BUTTON
-  ═══════════════════════════════════════════════ -->
-  <a href="https://wa.me/5492615181788?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20la%20grafoterapia" class="whatsapp-float" id="whatsappFloat" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/5492615181788?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20la%20grafoterapia" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
-  <!-- ═══════════════════════════════════════════════
-       SCRIPTS
-  ═══════════════════════════════════════════════ -->
   <script>
-    // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Mobile menu
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
       document.getElementById('hamburger').classList.toggle('active');
     }
-
     function closeMenu() {
       document.getElementById('navLinks').classList.remove('open');
       document.getElementById('hamburger').classList.remove('active');
     }
-
-    // Intersection Observer for reveal animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1595,30 +726,15 @@
           observer.unobserve(entry.target);
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // SVG writing decorations animation
-    const writingObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animated');
-          writingObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    document.querySelectorAll('.writing-decoration').forEach(el => writingObserver.observe(el));
-
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
   </script>
