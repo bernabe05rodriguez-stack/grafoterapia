@@ -15,6 +15,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// Serve static assets (images)
+app.get('/adriana.jpg', (req, res) => {
+  res.sendFile(path.join(__dirname, 'adriana.jpg'));
+});
+
 // Health check for EasyPanel
 app.get('/health', (req, res) => res.send('ok'));
 
