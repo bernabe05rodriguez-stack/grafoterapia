@@ -20,6 +20,13 @@ app.get('/adriana.jpg', (req, res) => {
   res.sendFile(path.join(__dirname, 'adriana.jpg'));
 });
 
+// Imagen de previsualización al compartir el link (og:image).
+// Cache larga: la piden los servidores de WhatsApp/Facebook, no el visitante.
+app.get('/og-image.jpg', (req, res) => {
+  res.setHeader('Cache-Control', 'public, max-age=86400');
+  res.sendFile(path.join(__dirname, 'og-image.jpg'));
+});
+
 // Health check for EasyPanel
 app.get('/health', (req, res) => res.send('ok'));
 
