@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,16 +25,41 @@
   <meta name="twitter:title" content="Adriana Sánchez · Grafóloga y Grafoterapeuta">
   <meta name="twitter:description" content="Transformá tu escritura, transformá tu vida. Sesiones para niños, adolescentes y adultos.">
   <meta name="twitter:image" content="https://redhawk-grafoterapia.bm6z1s.easypanel.host/og-image.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Grafoterapia \u00b7 Adriana S\u00e1nchez",
+    "description": "Grafoterapia y reeducaci\u00f3n gr\u00e1fica para ni\u00f1os desde 4 a\u00f1os, adolescentes y adultos.",
+    "url": "https://redhawk-grafoterapia.bm6z1s.easypanel.host/",
+    "image": "https://redhawk-grafoterapia.bm6z1s.easypanel.host/og-image.jpg",
+    "telephone": "+5492615181788",
+    "availableLanguage": "es",
+    "areaServed": { "@type": "Country", "name": "Argentina" },
+    "provider": {
+      "@type": "Person",
+      "name": "Adriana S\u00e1nchez",
+      "jobTitle": "Graf\u00f3loga y grafoterapeuta",
+      "image": "https://redhawk-grafoterapia.bm6z1s.easypanel.host/adriana.jpg",
+      "knowsAbout": ["Grafolog\u00eda", "Grafoterapia", "Reeducaci\u00f3n gr\u00e1fica", "Grafolog\u00eda forense", "Selecci\u00f3n de personal"]
+    }
+  }
+  </script>
+  <link rel="canonical" href="https://redhawk-grafoterapia.bm6z1s.easypanel.host/">
+  <meta name="theme-color" content="#faf8f4">
+  <!-- Favicon inline: evita el 404 de /favicon.ico (el server no sirve archivos sueltos). -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%237b6b4a'/%3E%3Ctext x='16' y='23.5' font-family='Georgia,serif' font-size='21' font-style='italic' fill='%23faf8f4' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
   <style>
     :root {
       --bg: #faf8f4;
       --bg-warm: #f5f0e8;
       --text: #2c2c2c;
       --text-soft: #5a5a5a;
-      --text-muted: #8a8a8a;
+      --text-muted: #6d6d6d;
       --accent: #7b6b4a;
       --accent-light: #a89470;
       --accent-soft: rgba(123,107,74,0.08);
@@ -53,6 +78,25 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
+
+    /* El nav mide 72px y es fijo: sin esto el titulo de cada seccion queda debajo. */
+    section[id] { scroll-margin-top: 88px; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Saltar al contenido: primer tabulador para quien navega con teclado. */
+    .skip-link {
+      position: absolute; left: 12px; top: -100px; z-index: 200;
+      background: var(--accent); color: var(--white);
+      padding: 12px 20px; border-radius: 0 0 10px 10px;
+      font-size: 0.9rem; font-weight: 500;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
 
     body {
       font-family: var(--sans);
@@ -84,12 +128,9 @@
       50% { transform: scale(1.02); }
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal { transition: opacity 0.8s ease, transform 0.8s ease; }
+    .js .reveal { opacity: 0; transform: translateY(30px); }
+    .js .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.15s; }
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
@@ -130,6 +171,7 @@
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       cursor: pointer; padding: 8px; z-index: 110;
+      background: none; border: none; -webkit-appearance: none; appearance: none;
     }
     .hamburger span {
       display: block; width: 24px; height: 2px;
@@ -252,7 +294,7 @@
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .feature-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; }
-    .feature-text h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
+    .feature-text h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
     .feature-text p { font-size: 0.85rem; color: var(--text-soft); line-height: 1.6; }
 
     /* PROCESO */
@@ -271,7 +313,7 @@
       font-family: var(--serif); font-size: 2.5rem; font-weight: 700;
       color: var(--accent); opacity: 0.2; line-height: 1; margin-bottom: 12px;
     }
-    .step-card h4 {
+    .step-card h3 {
       font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 10px;
     }
     .step-card p { font-size: 0.83rem; color: var(--text-soft); line-height: 1.7; }
@@ -292,7 +334,7 @@
       display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
     }
     .audience-icon svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; }
-    .audience-card h4 {
+    .audience-card h3 {
       font-family: var(--serif); font-size: 1.25rem; font-weight: 600; margin-bottom: 6px;
     }
     .audience-card .age {
@@ -324,7 +366,7 @@
     .about-photo img {
       width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
     }
-    .about-text h3 {
+    .about-text .about-name {
       font-family: var(--serif); font-size: 1.7rem; font-weight: 600; margin-bottom: 6px;
     }
     .about-text .credential {
@@ -390,7 +432,7 @@
       box-shadow: 0 14px 40px rgba(37,211,102,0.4);
     }
     .whatsapp-btn svg { width: 22px; height: 22px; fill: currentColor; }
-    .contact-info { margin-top: 28px; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+    .contact-info { margin-top: 28px; font-size: 0.85rem; color: rgba(255,255,255,0.68); }
 
     /* FOOTER */
     footer {
@@ -398,9 +440,9 @@
     }
     .footer-disclaimer {
       max-width: 600px; margin: 0 auto 12px; font-size: 0.75rem;
-      color: rgba(255,255,255,0.35); line-height: 1.6;
+      color: rgba(255,255,255,0.6); line-height: 1.6;
     }
-    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
 
     /* WHATSAPP FLOAT */
     .whatsapp-float {
@@ -434,6 +476,7 @@
         gap: 24px; z-index: 105;
       }
       .nav-links.open { display: flex; }
+      body.menu-open { overflow: hidden; }
       .nav-links a { font-size: 1.1rem; }
       .hamburger { display: flex; }
       .audience-grid { grid-template-columns: 1fr; }
@@ -445,46 +488,63 @@
       .whatsapp-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
       .whatsapp-float svg { width: 24px; height: 24px; }
     }
+
+    /* Quien pidio menos animacion en su sistema (mareos, migrana, foco) ve la
+       pagina quieta: sin flotar, sin latido, sin scroll animado. */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .js .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
 
+  <a href="#contenido" class="skip-link">Saltar al contenido</a>
+
   <!-- NAV -->
-  <nav id="navbar">
+  <nav id="navbar" aria-label="Navegación principal">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">Grafoterapia</a>
+      <a href="#inicio" class="nav-logo">Grafoterapia</a>
       <div class="nav-links" id="navLinks">
-        <a href="#que-es" onclick="closeMenu()">Qué es</a>
-        <a href="#proceso" onclick="closeMenu()">El proceso</a>
-        <a href="#para-quien" onclick="closeMenu()">Para quién</a>
-        <a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a>
-        <a href="#contacto" onclick="closeMenu()" class="nav-cta">Contactar</a>
+        <a href="#que-es">Qué es</a>
+        <a href="#proceso">El proceso</a>
+        <a href="#para-quien">Para quién</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto" class="nav-cta">Contactar</a>
       </div>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <button type="button" class="hamburger" id="hamburger"
+              aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </nav>
 
+  <main id="contenido">
+
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="inicio">
     <div class="hero-content">
       <div class="hero-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
         Reeducación Gráfica
       </div>
       <h1>Transformá tu <em>escritura</em>,<br>transformá tu <em>vida</em></h1>
       <p class="hero-sub">A través de ejercicios dirigidos, la grafoterapia ayuda a mejorar hábitos, fortalecer la autoconfianza y acompañar tu bienestar emocional.</p>
       <div class="hero-actions">
         <a href="#contacto" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Agendar consulta
         </a>
         <a href="#que-es" class="btn btn-secondary">Conocé más</a>
       </div>
     </div>
     <div class="hero-scroll">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
     </div>
   </section>
 
@@ -499,19 +559,19 @@
           <ul class="feature-list">
             <li class="reveal reveal-delay-2">
               <div class="feature-icon">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
               </div>
               <div class="feature-text">
-                <h4>Base grafológica profesional</h4>
+                <h3>Base grafológica profesional</h3>
                 <p>La grafología analiza; la grafoterapia interviene con formación oficial.</p>
               </div>
             </li>
             <li class="reveal reveal-delay-3">
               <div class="feature-icon">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+                <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
               </div>
               <div class="feature-text">
-                <h4>Personalizada y progresiva</h4>
+                <h3>Personalizada y progresiva</h3>
                 <p>Cada plan es único, adaptado a tu perfil y evolución.</p>
               </div>
             </li>
@@ -537,22 +597,22 @@
       <div class="steps">
         <div class="step-card reveal">
           <div class="step-number">01</div>
-          <h4>Primera sesión</h4>
+          <h3>Primera sesión</h3>
           <p>Se toma una muestra escritural de una carilla, más de 15 renglones, y dibujos proyectivos. Se detecta personalidad, conflictos y puntos a trabajar.</p>
         </div>
         <div class="step-card reveal reveal-delay-1">
           <div class="step-number">02</div>
-          <h4>Ejercicios guiados</h4>
+          <h3>Ejercicios guiados</h3>
           <p>Los tres primeros encuentros son seguidos, luego quincenales. En casa: 10 minutos diarios de práctica.</p>
         </div>
         <div class="step-card reveal reveal-delay-2">
           <div class="step-number">03</div>
-          <h4>Seguimiento</h4>
+          <h3>Seguimiento</h3>
           <p>Muestras periódicas para comparar la evolución. Cada nueva muestra refleja el camino recorrido.</p>
         </div>
         <div class="step-card reveal reveal-delay-3">
           <div class="step-number">04</div>
-          <h4>Consolidación</h4>
+          <h3>Consolidación</h3>
           <p>La duración depende de cada caso y persona, hasta que los nuevos hábitos gráficos se consolidan.</p>
         </div>
       </div>
@@ -569,9 +629,9 @@
       <div class="audience-grid">
         <div class="audience-card reveal">
           <div class="audience-icon">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 6v4"/><path d="M8 14l4-4 4 4"/><path d="M8 14v4"/><path d="M16 14v4"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 6v4"/><path d="M8 14l4-4 4 4"/><path d="M8 14v4"/><path d="M16 14v4"/></svg>
           </div>
-          <h4>Niños</h4>
+          <h3>Niños</h3>
           <div class="age">Desde los 4 años</div>
           <ul>
             <li>Mejora de la motricidad gráfica</li>
@@ -581,9 +641,9 @@
         </div>
         <div class="audience-card reveal reveal-delay-1">
           <div class="audience-icon">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
-          <h4>Adolescentes</h4>
+          <h3>Adolescentes</h3>
           <div class="age">14 a 18 años</div>
           <ul>
             <li>Gestión de la ansiedad</li>
@@ -593,9 +653,9 @@
         </div>
         <div class="audience-card reveal reveal-delay-2">
           <div class="audience-icon">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <h4>Adultos</h4>
+          <h3>Adultos</h3>
           <div class="age">Desde los 18 años</div>
           <ul>
             <li>Autoconfianza y bienestar</li>
@@ -612,32 +672,32 @@
     <div class="container">
       <div class="about-layout">
         <div class="about-photo reveal">
-          <img src="adriana.jpg" alt="Adriana Sánchez — Grafoterapeuta" loading="lazy">
+          <img src="adriana.jpg" alt="Adriana Sánchez, grafóloga y grafoterapeuta" width="800" height="447" loading="lazy" decoding="async">
         </div>
         <div class="about-text reveal reveal-delay-1">
           <span class="section-label">Sobre mí</span>
-          <h3>Adriana Sánchez</h3>
+          <h2 class="about-name">Adriana Sánchez</h2>
           <span class="credential">Docente Nivel Primario · Grafóloga · Grafoterapeuta</span>
           <p>Especialista en infanto juvenil y adultos. Acompaño a personas de todas las edades en su proceso de autoconocimiento y bienestar a través de la reeducación gráfica.</p>
           <div class="credential-badges">
             <span class="credential-badge">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 10 3 12 0v-5"/></svg>
+              <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 10 3 12 0v-5"/></svg>
               Docente Nivel Primario
             </span>
             <span class="credential-badge">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               Grafóloga · Grafoterapeuta
             </span>
             <span class="credential-badge">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
               Esp. Infanto juvenil y adultos
             </span>
             <span class="credential-badge">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+              <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
               Selección de personal
             </span>
             <span class="credential-badge">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
               Grafóloga Forense
             </span>
           </div>
@@ -655,36 +715,36 @@
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card reveal">
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <div class="testimonial-stars" role="img" aria-label="5 de 5 estrellas">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <p>"Llevé a mi hijo de 9 años porque le costaba la escritura. En pocos meses mejoró notablemente y lo vi más seguro de sí mismo."</p>
           <div class="testimonial-author">María L.</div>
           <div class="testimonial-detail">Mamá de paciente de 9 años</div>
         </div>
         <div class="testimonial-card reveal reveal-delay-1">
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <div class="testimonial-stars" role="img" aria-label="5 de 5 estrellas">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <p>"Fue una experiencia reveladora. Los ejercicios me ayudaron a ser más consciente de mis propios patrones."</p>
           <div class="testimonial-author">Carolina S.</div>
           <div class="testimonial-detail">Adulta, 34 años</div>
         </div>
         <div class="testimonial-card reveal reveal-delay-2">
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <div class="testimonial-stars" role="img" aria-label="5 de 5 estrellas">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <p>"Lo que más valoro es el enfoque humano y profesional. Acompañamiento real desde la primera sesión."</p>
           <div class="testimonial-author">Roberto M.</div>
@@ -702,7 +762,7 @@
       <p class="section-subtitle reveal reveal-delay-2">Escribime por WhatsApp y agendamos una primera conversación sin compromiso.</p>
       <div class="reveal reveal-delay-3">
         <a href="https://wa.me/5492615181788?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20la%20grafoterapia" class="whatsapp-btn" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Escribir por WhatsApp
         </a>
       </div>
@@ -710,32 +770,65 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer>
     <p class="footer-disclaimer">La grafoterapia es una técnica de acompañamiento y reeducación gráfica. No sustituye la atención médica ni psicológica profesional.</p>
-    <p class="footer-copy">© 2026 · Grafoterapia · Todos los derechos reservados</p>
+    <p class="footer-copy">Grafoterapia · Adriana Sánchez · Todos los derechos reservados</p>
   </footer>
 
   <!-- WHATSAPP FLOAT -->
   <a href="https://wa.me/5492615181788?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20la%20grafoterapia" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
   <script>
-    const navbar = document.getElementById('navbar');
+    const navbar    = document.getElementById('navbar');
+    const navLinks  = document.getElementById('navLinks');
+    const hamburger = document.getElementById('hamburger');
+
+    // Fondo del nav al bajar. passive: le avisa al navegador que no vamos a
+    // frenar el scroll, asi no espera al handler para dibujar.
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+        ticking = false;
+      });
+    }, { passive: true });
+
+    // --- Menu movil ---
+    function setMenu(open) {
+      navLinks.classList.toggle('open', open);
+      hamburger.classList.toggle('active', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      hamburger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      document.body.classList.toggle('menu-open', open);
+    }
+
+    hamburger.addEventListener('click', () => {
+      setMenu(!navLinks.classList.contains('open'));
     });
 
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('open');
-      document.getElementById('hamburger').classList.toggle('active');
-    }
-    function closeMenu() {
-      document.getElementById('navLinks').classList.remove('open');
-      document.getElementById('hamburger').classList.remove('active');
-    }
+    // Cualquier link del menu lo cierra (en movil ocupa toda la pantalla).
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => setMenu(false));
+    });
 
+    // Escape cierra y devuelve el foco al boton, para no perderlo en el vacio.
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        setMenu(false);
+        hamburger.focus();
+      }
+    });
+
+    // --- Aparicion progresiva al hacer scroll ---
+    // El salto por ancla lo hace el CSS (scroll-behavior + scroll-margin-top),
+    // no hace falta JS: asi la URL guarda el #hash y el boton "atras" funciona.
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -746,14 +839,6 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
   </script>
 
 </body>
