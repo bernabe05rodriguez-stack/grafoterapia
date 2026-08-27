@@ -1,0 +1,13 @@
+# Las dependencias se instalan en el contenedor (el Dockerfile corre npm install).
+# Si alguien hace npm install aca para probar en local, no tiene que viajar al repo.
+node_modules/
+npm-debug.log*
+
+# Nada de secretos: el token de EasyPanel vive en ~/.claude/secrets/easypanel.env.
+.env
+.env.*
+
+# Basura de Windows/OneDrive.
+Thumbs.db
+desktop.ini
+.DS_Store

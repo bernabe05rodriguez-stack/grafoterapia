@@ -1,0 +1,8 @@
+# Este repo se edita desde Windows y desde WSL. Sin esto, Git for Windows deja
+# CRLF en el checkout y despues el archivo entero aparece "modificado":
+# diffs de 800+/800- donde no cambio ni una coma (ya paso en Columen y Mascotitas).
+* text=auto eol=lf
+
+*.jpg binary
+*.png binary
+*.ico binary
