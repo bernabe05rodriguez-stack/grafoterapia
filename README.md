@@ -36,16 +36,26 @@ PORT=3000 node server.js
 ## Deploy
 
 1. `git push origin master` — la rama es **`master`**, no `main`.
-2. Deploy manual por la API de EasyPanel:
+   Desde WSL falla (sin credenciales): va con el git de Windows, igual que los
+   clones. Ver `LECCIONES.md`.
+2. Deploy manual — **no es automático**. El hook propio del servicio es el
+   camino que funciona (`panel.redhawk.digital` no resuelve desde WSL):
 
+```bash
+curl -sk --resolve panel.redhawk.digital:443:84.46.252.202 \
+  https://panel.redhawk.digital/api/deploy/<token del servicio>
 ```
-POST services.app.deployService
-{"json":{"projectName":"redhawk","serviceName":"grafoterapia"}}
+
+   Por la API tRPC el procedimiento es **`deployAppService`** (no
+   `services.app.deployService`, que no existe).
+
+3. Verificar — un `200` en `/health` **no alcanza**, confirmá que salió lo nuevo:
+
+```bash
+URL=https://redhawk-grafoterapia.bm6z1s.easypanel.host
+curl -s -o /dev/null -w '%{http_code}\n' $URL/health
+curl -s $URL/ | grep -c "classList.add('js')"
 ```
-
-El token vive en `~/.claude/secrets/easypanel.env`.
-
-3. Verificar: `curl -s -o /dev/null -w '%{http_code}' <URL>/health` → `200`.
 
 ## Antes de tocar
 

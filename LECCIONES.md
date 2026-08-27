@@ -39,6 +39,52 @@ la página se ve entera (sin animación, que es lo de menos).
 
 Verificado con `chrome --headless --disable-javascript`.
 
+## 2026-08-27 — Deployar esto desde WSL: tres cosas que no funcionan
+
+La v3.1 estuvo **6 días hecha y sin desplegar**: producción servía el commit del
+18/8 mientras el trabajo entero vivía sin commitear en una carpeta de OneDrive.
+Al ir a subirla aparecieron tres bloqueos, ninguno evidente hasta intentarlo.
+
+**1. El repo no tenía identidad de git** — ni local ni global ⇒ `git commit`
+muere con `empty ident name`. Este repo commitea como
+`Bernabe Rodriguez <bernabe05rodriguez@gmail.com>`, la de sus 6 commits previos.
+Ya quedó en el config local.
+
+**2. WSL no puede pushear** (`could not read Username for 'https://github.com'`).
+El push va con el git de Windows, igual que los clones:
+
+```bash
+powershell.exe -NoProfile -Command "cd 'C:\Users\berna\OneDrive\Documentos\Trabajo\grafoterapia'; git push origin master"
+```
+
+⚠️ PowerShell escupe la salida de git por stderr y la envuelve en un
+`NativeCommandError` rojo. **No es un fallo**: mirar la última línea
+(`73f6811..87c225a  master -> master`).
+
+**3. `panel.redhawk.digital` no resuelve desde WSL** (curl `rc=6`). Y el nombre
+del procedimiento que decía el README —`services.app.deployService`— **no
+existe**: es `deployAppService`, sin namespace, y está catalogado como
+*destructive*.
+
+Lo que sí funcionó para deployar es el **hook propio del servicio**:
+
+```bash
+curl -sk --resolve panel.redhawk.digital:443:84.46.252.202 \
+  https://panel.redhawk.digital/api/deploy/<token>    # -> 200 "Deploying..."
+```
+
+El token de cada servicio sale de `listProjectsAndServices`.
+
+**Y lo más importante: "está hecho" y "está en producción" son dos estados
+distintos.** La ficha del vault daba la v3.1 por hecha desde el 21/8. Verificar
+siempre contra el sitio en vivo, no contra la nota:
+
+```bash
+URL=https://redhawk-grafoterapia.bm6z1s.easypanel.host
+curl -s $URL/ | grep -c "classList.add('js')"                    # 1 = v3.1 arriba
+curl -s -H 'Accept-Encoding: gzip' -o /dev/null -w '%{size_download}\n' $URL/   # ~10600
+```
+
 ## Cómo sacar capturas de esta página (headless)
 
 Chrome headless viejo **no corre las animaciones CSS** con `--virtual-time-budget`,
