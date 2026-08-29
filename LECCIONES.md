@@ -61,10 +61,12 @@ powershell.exe -NoProfile -Command "cd 'C:\Users\berna\OneDrive\Documentos\Traba
 `NativeCommandError` rojo. **No es un fallo**: mirar la última línea
 (`73f6811..87c225a  master -> master`).
 
-**3. `panel.redhawk.digital` no resuelve desde WSL** (curl `rc=6`). Y el nombre
-del procedimiento que decía el README —`services.app.deployService`— **no
-existe**: es `deployAppService`, sin namespace, y está catalogado como
-*destructive*.
+**3. `panel.redhawk.digital` no resuelve desde WSL** (curl `rc=6`). Y ojo con el
+nombre del procedimiento, que **depende de la capa**: por el **MCP de EasyPanel**
+es `deployAppService` (sin namespace, *destructive*) y `services.app.deployService`
+ahí responde *Unknown procedure*; ese nombre con namespace es la **ruta HTTP del
+tRPC**, que es otra cosa y no se probó acá. El MCP además rechazó con `BAD_REQUEST`
+**cualquier** input de dos argumentos, así que por ahí no se pudo deployar.
 
 Lo que sí funcionó para deployar es el **hook propio del servicio**:
 
@@ -75,9 +77,13 @@ curl -sk --resolve panel.redhawk.digital:443:84.46.252.202 \
 
 El token de cada servicio sale de `listProjectsAndServices`.
 
-**Y lo más importante: "está hecho" y "está en producción" son dos estados
-distintos.** La ficha del vault daba la v3.1 por hecha desde el 21/8. Verificar
-siempre contra el sitio en vivo, no contra la nota:
+**Y lo más importante: el trabajo quedó rehén de una decisión que no lo
+bloqueaba.** La pasada técnica se dejó parada "a la espera de decidir qué se hace
+con los testimonios inventados" — y la accesibilidad, el SEO y el gzip no tienen
+nada que ver con los testimonios. El vault **no** mintió: decía "sin commitear ni
+deployar". Pero anotar bien el estado no alcanza si nadie vuelve a buscarlo.
+**"Está hecho" y "está en producción" son dos estados distintos**; verificar contra
+el sitio en vivo, no contra la nota:
 
 ```bash
 URL=https://redhawk-grafoterapia.bm6z1s.easypanel.host

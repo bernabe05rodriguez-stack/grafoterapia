@@ -46,8 +46,9 @@ curl -sk --resolve panel.redhawk.digital:443:84.46.252.202 \
   https://panel.redhawk.digital/api/deploy/<token del servicio>
 ```
 
-   Por la API tRPC el procedimiento es **`deployAppService`** (no
-   `services.app.deployService`, que no existe).
+   Por el **MCP de EasyPanel** el procedimiento es **`deployAppService`**; por la
+   **ruta HTTP del tRPC** es `services.app.deployService`. Son capas distintas: el
+   nombre de una no sirve en la otra.
 
 3. Verificar — un `200` en `/health` **no alcanza**, confirmá que salió lo nuevo:
 
