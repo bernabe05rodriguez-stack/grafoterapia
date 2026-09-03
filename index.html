@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grafoterapia · Reeducación Gráfica</title>
-  <meta name="description" content="Grafoterapia: reeducación terapéutica de la escritura. Transformá tu letra, transformá tu vida. Sesiones personalizadas para niños, adolescentes y adultos.">
+  <title>Puño y Letra · Grafoterapia y reeducación gráfica</title>
+  <meta name="description" content="Puño y Letra — grafoterapia y reeducación terapéutica de la escritura. Transformá tu letra, transformá tu vida. Sesiones personalizadas para niños, adolescentes y adultos.">
   <meta property="og:title" content="Adriana Sánchez · Grafóloga y Grafoterapeuta">
   <meta property="og:description" content="Transformá tu escritura, transformá tu vida. Sesiones personalizadas para niños desde 4 años, adolescentes y adultos.">
   <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Adriana Sánchez, grafóloga y grafoterapeuta">
   <meta property="og:locale" content="es_AR">
-  <meta property="og:site_name" content="Grafoterapia · Adriana Sánchez">
+  <meta property="og:site_name" content="Puño y Letra · Adriana Sánchez">
   <!-- Twitter/X usa sus propias etiquetas; summary_large_image = foto grande. -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Adriana Sánchez · Grafóloga y Grafoterapeuta">
@@ -29,7 +29,8 @@
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Grafoterapia \u00b7 Adriana S\u00e1nchez",
+    "name": "Pu\u00f1o y Letra",
+    "alternateName": "Grafoterapia Adriana S\u00e1nchez",
     "description": "Grafoterapia y reeducaci\u00f3n gr\u00e1fica para ni\u00f1os desde 4 a\u00f1os, adolescentes y adultos.",
     "url": "https://depuñoyletra.online/",
     "image": "https://xn--depuoyletra-4db.online/og-image.jpg",
@@ -48,7 +49,7 @@
   <link rel="canonical" href="https://depuñoyletra.online/">
   <meta name="theme-color" content="#faf8f4">
   <!-- Favicon inline: evita el 404 de /favicon.ico (el server no sirve archivos sueltos). -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%237b6b4a'/%3E%3Ctext x='16' y='23.5' font-family='Georgia,serif' font-size='21' font-style='italic' fill='%23faf8f4' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%237b6b4a'/%3E%3Ctext x='16' y='23.5' font-family='Georgia,serif' font-size='21' font-style='italic' fill='%23faf8f4' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -62,6 +63,18 @@
       --text-muted: #6d6d6d;
       --accent: #7b6b4a;
       --accent-light: #a89470;
+      /* El hover ACLARABA el boton: blanco sobre --accent-light da 2.94 y no
+         llega a AA (4.5). Oscurecer sube el contraste a 6.53 y ademas es lo que
+         se espera al pasar el mouse. --accent-light se queda: donde se usa
+         (estrellas, comilla decorativa, label sobre el fondo oscuro) esta bien. */
+      --accent-dark: #6a5c40;
+      /* Verde de WhatsApp bajado en luminosidad, mismo tono (142deg) y misma
+         saturacion. El #25D366 de marca con texto blanco da 1.98: el boton mas
+         importante de la pagina era el menos legible. Este da 4.88.
+         Para volver al verde original, cambiar estas dos lineas y nada mas. */
+      --wa: #17823f;
+      --wa-dark: #126832;
+      --wa-glow: 23,130,63;
       --accent-soft: rgba(123,107,74,0.08);
       --accent-border: rgba(123,107,74,0.15);
       --sage: #8fa68f;
@@ -167,7 +180,7 @@
       font-size: 0.85rem !important; font-weight: 500 !important;
       transition: background var(--transition), transform 0.2s !important;
     }
-    .nav-cta:hover { background: var(--accent-light) !important; transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--accent-dark) !important; transform: translateY(-1px); }
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       cursor: pointer; padding: 8px; z-index: 110;
@@ -232,7 +245,7 @@
     }
     .btn-primary { background: var(--accent); color: var(--white); }
     .btn-primary:hover {
-      background: var(--accent-light); transform: translateY(-2px);
+      background: var(--accent-dark); transform: translateY(-2px);
       box-shadow: 0 12px 30px rgba(123,107,74,0.25);
     }
     .btn-secondary { background: transparent; color: var(--accent); border: 1.5px solid var(--accent-border); }
@@ -252,6 +265,8 @@
       color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
       margin-bottom: 16px;
     }
+    /* Encabezado centrado de seccion. Estaba como style="" inline en 3 lugares. */
+    .section-head { text-align: center; }
     .section-title {
       font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 500; line-height: 1.2; margin-bottom: 20px;
@@ -422,14 +437,14 @@
     .contact-cta { position: relative; z-index: 1; }
     .whatsapp-btn {
       display: inline-flex; align-items: center; gap: 12px;
-      padding: 18px 44px; background: #25D366; color: var(--white);
+      padding: 18px 44px; background: var(--wa); color: var(--white);
       border-radius: 50px; font-size: 1.05rem; font-weight: 600;
       font-family: var(--sans); border: none; cursor: pointer;
-      transition: all var(--transition); box-shadow: 0 8px 30px rgba(37,211,102,0.3);
+      transition: all var(--transition); box-shadow: 0 8px 30px rgba(var(--wa-glow),0.3);
     }
     .whatsapp-btn:hover {
-      background: #20bd5a; transform: translateY(-3px);
-      box-shadow: 0 14px 40px rgba(37,211,102,0.4);
+      background: var(--wa-dark); transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(var(--wa-glow),0.4);
     }
     .whatsapp-btn svg { width: 22px; height: 22px; fill: currentColor; }
     .contact-info { margin-top: 28px; font-size: 0.85rem; color: rgba(255,255,255,0.68); }
@@ -442,19 +457,19 @@
       max-width: 600px; margin: 0 auto 12px; font-size: 0.75rem;
       color: rgba(255,255,255,0.6); line-height: 1.6;
     }
-    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.55); }
 
     /* WHATSAPP FLOAT */
     .whatsapp-float {
       position: fixed; bottom: 28px; right: 28px; width: 58px; height: 58px;
-      background: #25D366; border-radius: 50%;
+      background: var(--wa); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 90;
+      box-shadow: 0 4px 20px rgba(var(--wa-glow),0.4); z-index: 90;
       transition: transform var(--transition), box-shadow var(--transition);
       animation: gentlePulse 3s ease-in-out infinite;
     }
     .whatsapp-float:hover {
-      transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); animation: none;
+      transform: scale(1.1); box-shadow: 0 8px 30px rgba(var(--wa-glow),0.5); animation: none;
     }
     .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
 
@@ -509,7 +524,7 @@
   <!-- NAV -->
   <nav id="navbar" aria-label="Navegación principal">
     <div class="nav-inner">
-      <a href="#inicio" class="nav-logo">Grafoterapia</a>
+      <a href="#inicio" class="nav-logo">Puño y Letra</a>
       <div class="nav-links" id="navLinks">
         <a href="#que-es">Qué es</a>
         <a href="#proceso">El proceso</a>
@@ -590,7 +605,7 @@
   <!-- EL PROCESO -->
   <section id="proceso">
     <div class="container">
-      <div style="text-align:center;">
+      <div class="section-head">
         <span class="section-label reveal">El proceso</span>
         <h2 class="section-title reveal reveal-delay-1">Cómo trabajo</h2>
       </div>
@@ -622,7 +637,7 @@
   <!-- PARA QUIÉN -->
   <section id="para-quien">
     <div class="container">
-      <div style="text-align:center;">
+      <div class="section-head">
         <span class="section-label reveal">Para quién</span>
         <h2 class="section-title reveal reveal-delay-1">Para cada etapa de la vida</h2>
       </div>
@@ -709,7 +724,7 @@
   <!-- TESTIMONIOS -->
   <section id="testimonios">
     <div class="container">
-      <div style="text-align:center;">
+      <div class="section-head">
         <span class="section-label reveal">Testimonios</span>
         <h2 class="section-title reveal reveal-delay-1">Experiencias reales</h2>
       </div>
@@ -775,7 +790,7 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-disclaimer">La grafoterapia es una técnica de acompañamiento y reeducación gráfica. No sustituye la atención médica ni psicológica profesional.</p>
-    <p class="footer-copy">Grafoterapia · Adriana Sánchez · Todos los derechos reservados</p>
+    <p class="footer-copy">Puño y Letra · Adriana Sánchez · Todos los derechos reservados</p>
   </footer>
 
   <!-- WHATSAPP FLOAT -->
