@@ -91,6 +91,48 @@ curl -s $URL/ | grep -c "classList.add('js')"                    # 1 = v3.1 arri
 curl -s -H 'Accept-Encoding: gzip' -o /dev/null -w '%{size_download}\n' $URL/   # ~10600
 ```
 
+## 2026-09-03 — El dominio propio: la ñ y el orden de los pasos
+
+`depuñoyletra.online` (Hostinger). Dos cosas que valen para la próxima.
+
+**La ñ no existe fuera del navegador.** En DNS, en Traefik y en el certificado el
+dominio es `xn--depuoyletra-4db.online`. El navegador y Google lo decodifican y
+muestran la ñ, pero cualquier cosa que se configure a mano va en punycode.
+
+Dentro del HTML las 8 URLs absolutas **no van todas en la misma forma**, y la
+diferencia no es cosmética:
+
+- **Punycode** en `og:image`, `og:image:secure_url`, `twitter:image` y las
+  imágenes del JSON-LD. Son archivos que un rastreador **descarga**: no se gana
+  nada arriesgando que alguno no sepa parsear un host con ñ.
+- **Unicode** en `og:url`, `canonical` y la `url` del JSON-LD. Esas se **leen**.
+  Si en la tarjeta de WhatsApp aparece `xn--depuoyletra-4db.online`, parece
+  phishing — justo lo contrario de lo que la placa `og-image` vino a lograr.
+
+**El orden importa: primero el DNS, después el dominio en EasyPanel.** Se
+crearon los dominios en EasyPanel antes de cargar los registros A en Hostinger.
+Let's Encrypt intentó validar contra un dominio que todavía no resolvía, falló, y
+quedó en backoff: **más de 4 minutos y dos deploys sirviendo el cert autofirmado**
+de EasyPanel, con Chrome marcando "No es seguro". Nada de la configuración estaba
+mal — se verificó que era idéntica a `mascotitas.online` y
+`creador.fidelizador.online`, que sí andan, y que no había registros CAA.
+
+Lo que lo destrabó es el pitfall ya documentado en Mascotitas: **borrar el domain
+y volver a crearlo** (`domains.deleteDomain` + `domains.createDomain` con id
+nuevo) + deploy. El cert salió en menos de 12 segundos.
+
+Para diagnosticar esto sin adivinar, tres comandos:
+
+```bash
+D=xn--depuoyletra-4db.online
+echo | openssl s_client -connect $D:443 -servername $D 2>/dev/null | openssl x509 -noout -issuer
+curl -s -o /dev/null -w '%{http_code}\n' http://$D/.well-known/acme-challenge/probe   # 404 sin redirigir = el challenge llega
+curl -s -o /dev/null -w 'ssl_verify=%{ssl_verify_result}\n' https://$D/               # 0 = cadena valida
+```
+
+`ssl_verify=0` es la única prueba de que salió bien: un `200` con `-k` lo da igual
+el cert autofirmado.
+
 ## Cómo sacar capturas de esta página (headless)
 
 Chrome headless viejo **no corre las animaciones CSS** con `--virtual-time-budget`,
