@@ -133,6 +133,60 @@ curl -s -o /dev/null -w 'ssl_verify=%{ssl_verify_result}\n' https://$D/         
 `ssl_verify=0` es la única prueba de que salió bien: un `200` con `-k` lo da igual
 el cert autofirmado.
 
+## 2026-09-03 — La foto: por que el marco es 4/3 y no puede ser mas ancho
+
+`adriana.jpg` es **apaisada: 800x447**. Estaba metida en un marco `aspect-ratio: 3/4`
+**vertical** con `object-fit: cover`: de los 800px de ancho se veian **335**. En el
+celular era peor, porque encima se achicaba a 280px. Por eso "se veia cortada".
+
+Ahora el marco es **4/3** y se ven 596px. **No se puede ensanchar mas**, y la razon
+no es estetica:
+
+> 🔴 La foto tiene una **marca de agua de generacion por IA** — el destello de cuatro
+> puntas — en el angulo inferior derecho, alrededor de **x 715-750, y 360-390**.
+> Con `cover` centrado, 4/3 muestra hasta x=698 y la deja **fuera de cuadro por 17px**.
+> **De 3/2 en adelante entra en cuadro.** Si alguien "mejora" el recorte a 3/2 o 16/9,
+> la marca aparece en la pagina.
+
+Lo correcto de fondo es reemplazar la foto por una real de Adriana. Mientras tanto,
+el recorte 4/3 es el maximo posible. Verificar con:
+
+```bash
+python3 -c "
+from PIL import Image; im=Image.open('adriana.jpg'); W,H=im.size
+for r in (4/3, 3/2, 16/9):
+    vw=min(W,H*r); x1=(W-vw)/2+vw
+    print(f'{r:.2f} -> borde derecho x={x1:.0f}  marca visible: {x1>712}')"
+```
+
+## 2026-09-03 — Capturar el celular: el ancho miente, medilo desde adentro
+
+La entrada vieja decia que el ancho de ventana "no emula un movil" y que la captura
+"sale recortada". Es cierto y ahora esta el numero: **Chrome en Windows fija
+`window.innerWidth` en 500 por mas que se pida `--window-size=390`** — tambien con
+`--headless=new`. El PNG sale de 390px porque se **recorta** una pagina compuesta a
+500. Por eso el texto aparece cortado a la derecha y **parece** un desborde que no
+existe.
+
+No lo deduzcas: medilo. Inyectar una sonda que escriba en el `<title>` y leerlo con
+`--dump-dom` — `--dump-dom` devuelve el DOM ya ejecutado, asi que sirve de canal:
+
+```js
+document.title = 'innerWidth=' + window.innerWidth +
+  ' scrollWidth=' + document.documentElement.scrollWidth;
+// y el elemento que realmente se pasa:
+document.querySelectorAll('*').forEach(el => {
+  const r = el.getBoundingClientRect();
+  if (r.right > window.innerWidth + 1) console.log(el);
+});
+```
+
+Si `scrollWidth <= innerWidth` y ningun elemento se pasa, **no hay desborde**. Aca
+dio `innerWidth=500, scrollWidth=485, ninguno` — la pagina estaba bien y el recorte
+era del instrumento. Es el mismo error de [[control negativo]]: casi "arreglo" un
+bug que solo existia en la herramienta de medicion. Para ver 390 de verdad,
+navegador real.
+
 ## Cómo sacar capturas de esta página (headless)
 
 Chrome headless viejo **no corre las animaciones CSS** con `--virtual-time-budget`,

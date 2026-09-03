@@ -13,15 +13,18 @@ Producción: https://depuñoyletra.online
    HTML. Si falta cualquiera de los tres, en local anda y en producción da 404.
 4. **No cambiar la URL de `/og-image.jpg`.** WhatsApp cachea el preview por link;
    si se renombra, todos los links ya compartidos pierden la imagen.
-5. **El deploy NO es automático.** Push + `deployService` por la API de EasyPanel
+5. **No ensanchar el recorte de `adriana.jpg` más allá de 4/3.** La foto tiene una
+   marca de agua de IA en el ángulo inferior derecho; con 4/3 queda fuera de cuadro
+   por 17px, con 3/2 entra. Detalle en `LECCIONES.md`.
+6. **El deploy NO es automático.** Push + `deployService` por la API de EasyPanel
    (`redhawk` / `grafoterapia`). Ver README.
-6. **El contenido lo decide la clienta.** Adriana ya pidió dos veces que la página
+7. **El contenido lo decide la clienta.** Adriana ya pidió dos veces que la página
    sea más corta. Antes de agregar una sección nueva, preguntar. Nunca inventar
    credenciales, precios, dirección ni modalidad (presencial/online): si no está
    en la página, es porque nadie lo confirmó.
-7. **Cero promesas médicas.** El copy posiciona la grafoterapia como
+8. **Cero promesas médicas.** El copy posiciona la grafoterapia como
    *acompañamiento*, y el footer lleva el disclaimer. No tocar ese encuadre.
-8. **Sin build, sin framework, sin dependencias en el front.** Todo va inline en
+9. **Sin build, sin framework, sin dependencias en el front.** Todo va inline en
    `index.html`. Si algo necesita npm en el frontend, está mal planteado.
 
 ## Cosas que se rompen fácil
