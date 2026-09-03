@@ -4,7 +4,7 @@ Landing page profesional de **Adriana Sánchez** — grafóloga, grafoterapeuta 
 especialista infanto juvenil y adultos. Una sola pantalla, con WhatsApp como
 único canal de contacto.
 
-🔗 https://redhawk-grafoterapia.bm6z1s.easypanel.host
+🔗 https://depuñoyletra.online
 
 ## Stack
 
@@ -53,7 +53,7 @@ curl -sk --resolve panel.redhawk.digital:443:84.46.252.202 \
 3. Verificar — un `200` en `/health` **no alcanza**, confirmá que salió lo nuevo:
 
 ```bash
-URL=https://redhawk-grafoterapia.bm6z1s.easypanel.host
+URL=https://depuñoyletra.online
 curl -s -o /dev/null -w '%{http_code}\n' $URL/health
 curl -s $URL/ | grep -c "classList.add('js')"
 ```
