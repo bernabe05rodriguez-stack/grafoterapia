@@ -133,31 +133,38 @@ curl -s -o /dev/null -w 'ssl_verify=%{ssl_verify_result}\n' https://$D/         
 `ssl_verify=0` es la única prueba de que salió bien: un `200` con `-k` lo da igual
 el cert autofirmado.
 
-## 2026-09-03 — La foto: por que el marco es 4/3 y no puede ser mas ancho
+## 2026-09-03 — La foto: un marco vertical para una foto apaisada, y la marca de agua
 
-`adriana.jpg` es **apaisada: 800x447**. Estaba metida en un marco `aspect-ratio: 3/4`
-**vertical** con `object-fit: cover`: de los 800px de ancho se veian **335**. En el
-celular era peor, porque encima se achicaba a 280px. Por eso "se veia cortada".
+Dos problemas distintos en el mismo archivo. El segundo tapaba al primero.
 
-Ahora el marco es **4/3** y se ven 596px. **No se puede ensanchar mas**, y la razon
-no es estetica:
+**1. El encuadre.** `adriana.jpg` es **apaisada: 800x447**, y estaba metida en un
+marco `aspect-ratio: 3/4` **vertical** con `object-fit: cover`. De los 800px de ancho
+se veian **335**. En el celular era peor porque encima se achicaba a 280px. Eso era
+lo que se veia "cortado". Ahora el marco es **4/3**: se ven 596px y entra entera.
 
-> 🔴 La foto tiene una **marca de agua de generacion por IA** — el destello de cuatro
-> puntas — en el angulo inferior derecho, alrededor de **x 715-750, y 360-390**.
-> Con `cover` centrado, 4/3 muestra hasta x=698 y la deja **fuera de cuadro por 17px**.
-> **De 3/2 en adelante entra en cuadro.** Si alguien "mejora" el recorte a 3/2 o 16/9,
-> la marca aparece en la pagina.
+**2. La marca de agua.** La foto traia el **destello de cuatro puntas** que dejan las
+herramientas de IA de Google, en el angulo inferior derecho — medido en
+**x 715-745, y 358-393**. Se quito el 2026-09-03 por relleno de difusion (resolver
+Laplace sobre la zona, sin grano y con la mascara difuminada). Detalles que importan
+si hay que repetirlo:
 
-Lo correcto de fondo es reemplazar la foto por una real de Adriana. Mientras tanto,
-el recorte 4/3 es el maximo posible. Verificar con:
+- **Sin grano.** El primer intento le agrego ruido "para que no quedara liso" y el
+  parche se vio como un cuadrado con textura distinta: ahi el fondo es bokeh, o sea
+  **liso de verdad**. Agregar grano lo delataba.
+- **Mascara difuminada, no caja dura.** Con la caja de bordes rectos se ve el corte.
+- Se revisaron **las cuatro esquinas**: solo estaba esa.
+- La placa `og-image.jpg` **no la llevaba** (recorta antes), no hubo que rehacerla.
+- El original con la marca queda en el historial de git.
 
-```bash
-python3 -c "
-from PIL import Image; im=Image.open('adriana.jpg'); W,H=im.size
-for r in (4/3, 3/2, 16/9):
-    vw=min(W,H*r); x1=(W-vw)/2+vw
-    print(f'{r:.2f} -> borde derecho x={x1:.0f}  marca visible: {x1>712}')"
-```
+⚠️ **Ojo con la doc**: mientras la marca estuvo, la regla era "no ensanchar mas de
+4/3 porque a 3/2 la marca entra en cuadro". Ya no aplica — se quito la marca, no la
+restriccion. El 4/3 se mantiene por **composicion**, no por obligacion. Una regla
+dura que sobrevive a su motivo es peor que no tenerla.
+
+**Lo que sigue pendiente**: 800x447 es **poca resolucion** para el uso actual. En el
+celular la foto se muestra a 445px CSS, o sea que en una pantalla 2x pide ~890px y no
+los tiene. Con el archivo original de camara se arregla esto y ademas se podria volver
+a un encuadre vertical, que para un retrato queda mejor.
 
 ## 2026-09-03 — Capturar el celular: el ancho miente, medilo desde adentro
 

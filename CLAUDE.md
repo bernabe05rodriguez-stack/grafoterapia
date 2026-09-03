@@ -13,9 +13,10 @@ Producción: https://depuñoyletra.online
    HTML. Si falta cualquiera de los tres, en local anda y en producción da 404.
 4. **No cambiar la URL de `/og-image.jpg`.** WhatsApp cachea el preview por link;
    si se renombra, todos los links ya compartidos pierden la imagen.
-5. **No ensanchar el recorte de `adriana.jpg` más allá de 4/3.** La foto tiene una
-   marca de agua de IA en el ángulo inferior derecho; con 4/3 queda fuera de cuadro
-   por 17px, con 3/2 entra. Detalle en `LECCIONES.md`.
+5. **`adriana.jpg` está retocada.** Tenía una marca de agua de IA en el ángulo
+   inferior derecho y se le quitó el 2026-09-03; el archivo original, con la marca,
+   queda en el historial de git. Si alguien reemplaza la foto por otra versión,
+   **revisar las cuatro esquinas antes de subirla**. Detalle en `LECCIONES.md`.
 6. **El deploy NO es automático.** Push + `deployService` por la API de EasyPanel
    (`redhawk` / `grafoterapia`). Ver README.
 7. **El contenido lo decide la clienta.** Adriana ya pidió dos veces que la página
