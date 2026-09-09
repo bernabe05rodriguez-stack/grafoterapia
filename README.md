@@ -1,6 +1,6 @@
-# Grafoterapia — Landing Page
+# depuñoyletra.online — Landing Page
 
-Landing page profesional de **Adriana Sánchez** — grafóloga, grafoterapeuta y
+Landing page profesional de **Adriana Lourdes Sánchez** — grafóloga, grafoterapeuta y
 especialista infanto juvenil y adultos. Una sola pantalla, con WhatsApp como
 único canal de contacto.
 

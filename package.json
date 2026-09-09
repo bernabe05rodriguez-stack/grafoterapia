@@ -1,5 +1,5 @@
 {
-  "name": "grafoterapia",
+  "name": "xn--depuoyletra-4db.online",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -9,5 +9,5 @@
     "express": "^4.21.0",
     "compression": "^1.7.4"
   },
-  "description": "Landing page de Adriana Sanchez, grafologa y grafoterapeuta."
+  "description": "Landing page de Adriana Lourdes Sánchez para depuñoyletra.online."
 }

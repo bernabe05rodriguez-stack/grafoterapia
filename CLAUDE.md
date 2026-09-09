@@ -1,6 +1,6 @@
-# CLAUDE.md — Grafoterapia
+# CLAUDE.md — depuñoyletra.online
 
-Landing de **Adriana Sánchez** (mamá de Bernabé), grafóloga y grafoterapeuta.
+Landing de **Adriana Lourdes Sánchez** (mamá de Bernabé), grafóloga y grafoterapeuta.
 Producción: https://depuñoyletra.online
 
 ## Reglas duras

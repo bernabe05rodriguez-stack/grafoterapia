@@ -73,7 +73,7 @@ app.get('/health', (req, res) => res.send('ok'));
 app.use((req, res) => res.redirect(302, '/'));
 
 const server = app.listen(PORT, () => {
-  console.log(`Grafoterapia running on port ${PORT}`);
+  console.log(`depuñoyletra.online running on port ${PORT}`);
 });
 
 // EasyPanel manda SIGTERM al redeployar: cerrar las conexiones abiertas antes de

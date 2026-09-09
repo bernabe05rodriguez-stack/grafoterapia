@@ -1,4 +1,4 @@
-# LECCIONES.md — Grafoterapia
+# LECCIONES.md — depuñoyletra.online
 
 Detalle técnico y trampas ya pagadas. Lo del día a día está en `CLAUDE.md`.
 
@@ -54,7 +54,7 @@ Ya quedó en el config local.
 El push va con el git de Windows, igual que los clones:
 
 ```bash
-powershell.exe -NoProfile -Command "cd 'C:\Users\berna\OneDrive\Documentos\Trabajo\grafoterapia'; git push origin master"
+powershell.exe -NoProfile -Command "cd 'C:\Users\berna\OneDrive\Documentos\Trabajo\depuñoyletra.online'; git push origin master"
 ```
 
 ⚠️ PowerShell escupe la salida de git por stderr y la envuelve en un
