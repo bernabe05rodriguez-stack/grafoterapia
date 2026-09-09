@@ -65,6 +65,12 @@ app.get('/og-image.jpg', (req, res) => {
   res.sendFile(path.join(__dirname, 'og-image.jpg'));
 });
 
+// Fondo único de cuaderno en resolución 4K.
+app.get('/cuaderno-bg.webp', (req, res) => {
+  res.setHeader('Cache-Control', IMG_CACHE);
+  res.sendFile(path.join(__dirname, 'cuaderno-bg.webp'));
+});
+
 // Health check for EasyPanel
 app.get('/health', (req, res) => res.send('ok'));
 

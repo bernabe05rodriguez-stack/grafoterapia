@@ -106,20 +106,12 @@
     body {
       font-family: var(--sans);
       color: var(--text);
-      background-color: var(--bg);
-      background-image:
-        radial-gradient(ellipse at 8% 12%, rgba(181,137,96,0.16) 0, transparent 32%),
-        radial-gradient(ellipse at 92% 42%, rgba(112,131,108,0.12) 0, transparent 28%),
-        repeating-linear-gradient(2deg, transparent 0 7px, rgba(70,52,35,0.018) 8px, transparent 9px);
+      background: #eee4cf url('/cuaderno-bg.webp') center center / cover fixed no-repeat;
       line-height: 1.7;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    body::before {
-      content: ''; position: fixed; inset: 0; z-index: 1000; pointer-events: none;
-      opacity: 0.10; mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
-    }
+    body::before { display: none; }
 
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -204,21 +196,9 @@
     .hero {
       min-height: 100vh; display: flex; align-items: center;
       position: relative; padding: 130px 24px 90px; overflow: hidden;
-      border-bottom: 1px solid var(--accent-border);
+      border-bottom: 1px solid rgba(78,57,39,.18);
     }
-    .hero::before {
-      content: ''; position: absolute; width: 620px; height: 420px;
-      left: -120px; top: 18%; transform: rotate(-7deg);
-      background:
-        radial-gradient(ellipse at center, rgba(188,143,104,0.25) 0 38%, transparent 70%);
-      filter: blur(3px); opacity: .75; animation: washIn 1.4s ease .15s both;
-    }
-    .hero::after {
-      content: 'de puño y letra'; position: absolute; right: 4%; top: 28%;
-      font-family: var(--script); font-size: clamp(5rem, 10vw, 9rem);
-      color: var(--accent); opacity: .10; transform: rotate(-9deg);
-      white-space: nowrap; pointer-events: none; animation: handwritingIn 1.4s ease .55s both;
-    }
+    .hero::before, .hero::after { display: none; }
     .hero-content {
       width: min(1200px, 100%); max-width: 1200px; margin: 0 auto;
       text-align: left; position: relative; z-index: 1;
@@ -234,8 +214,8 @@
       background: rgba(189,144,107,.25); transform: rotate(-1deg); z-index: -1;
     }
     .hero h1 {
-      font-family: var(--serif); font-size: clamp(3.4rem, 7.4vw, 6.6rem);
-      max-width: 860px; font-weight: 500; line-height: .98; color: var(--text);
+      font-family: var(--serif); font-size: clamp(3.1rem, 6.2vw, 5.6rem);
+      max-width: 820px; font-weight: 500; line-height: 1.02; color: var(--text);
       margin-bottom: 30px; letter-spacing: -0.035em; animation: fadeInUp 1s ease 0.5s both;
     }
     .hero h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
@@ -248,6 +228,10 @@
     .hero-actions {
       display: flex; gap: 18px; justify-content: flex-start; flex-wrap: wrap;
       animation: fadeInUp 1s ease 0.9s both;
+    }
+    .hero-note {
+      margin: 22px 0 0 4px; max-width: 520px; color: var(--text-muted);
+      font-size: .84rem; animation: fadeIn 1s ease 1.05s both;
     }
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
@@ -264,6 +248,7 @@
 
     /* SECTIONS */
     section { padding: 104px 24px; position: relative; }
+    section:not(.hero) { border-bottom: 1px solid rgba(78,57,39,.14); }
     .container { max-width: 1100px; margin: 0 auto; }
     .section-label {
       display: inline-block; font-size: 0.73rem; font-weight: 600;
@@ -285,7 +270,7 @@
     }
 
     /* QUÉ ES */
-    #que-es { background: rgba(251,248,240,.48); }
+    #que-es { background: transparent; }
     .split {
       display: grid; grid-template-columns: 1.08fr .92fr; gap: 86px; align-items: center;
     }
@@ -326,8 +311,8 @@
 
     /* PROCESO: secuencia como anotaciones al margen, sin tarjetas clonadas. */
     #proceso {
-      background: linear-gradient(105deg, rgba(221,207,185,.62), rgba(236,226,207,.38));
-      border-block: 1px solid rgba(78,57,39,.12);
+      background: transparent;
+      border-block: 0;
     }
     .steps {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 54px;
@@ -352,7 +337,7 @@
     .step-card p { font-size: 0.83rem; color: var(--text-soft); line-height: 1.7; }
 
     /* PARA QUIÉN */
-    #para-quien { background: rgba(251,248,240,.35); }
+    #para-quien { background: transparent; }
     .audience-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 58px;
     }
@@ -387,11 +372,19 @@
       content: ''; width: 5px; height: 5px; border-radius: 50%;
       background: var(--sage); flex-shrink: 0;
     }
+    .mid-cta {
+      margin-top: 48px; padding: 22px 26px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      border-block: 1px solid var(--accent-border); background: rgba(248,242,226,.58);
+    }
+    .mid-cta p { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; }
+    .mid-cta a { color: var(--wa-dark); font-weight: 700; border-bottom: 2px solid var(--wa); }
+    .mid-cta a:hover { color: var(--accent-dark); border-color: var(--accent); }
 
     /* SOBRE MÍ */
     #sobre-mi {
-      background: linear-gradient(150deg, rgba(230,219,199,.60), rgba(244,239,229,.25));
-      border-top: 1px solid rgba(78,57,39,.12);
+      background: transparent;
+      border-top: 0;
     }
     .about-layout {
       display: grid; grid-template-columns: 350px 1fr; gap: 72px;
@@ -434,7 +427,7 @@
     .credential-badge svg { width: 14px; height: 14px; stroke: var(--accent); fill: none; }
 
     /* TESTIMONIOS: papeles sueltos, no reseñas en tarjetas idénticas. */
-    #testimonios { background: rgba(251,248,240,.40); }
+    #testimonios { background: transparent; }
     .testimonials-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 58px;
     }
@@ -449,7 +442,7 @@
     .testimonial-card:nth-child(2) { transform: rotate(1.2deg) translateY(18px); }
     .testimonial-card:nth-child(3) { transform: rotate(-.7deg) translateY(4px); }
     .testimonial-card:hover { transform: rotate(0) translateY(-3px); box-shadow: var(--shadow-md); }
-    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .testimonial-stars { display: none; }
     .testimonial-stars svg { width: 14px; height: 14px; fill: var(--accent-light); }
     .testimonial-card p {
       font-size: 0.88rem; color: var(--text-soft); line-height: 1.7;
@@ -460,23 +453,20 @@
 
     /* CONTACTO */
     #contacto {
-      background-color: #d9c9af;
-      background-image:
-        radial-gradient(ellipse at 18% 18%, rgba(176,112,72,.24), transparent 36%),
-        radial-gradient(ellipse at 88% 76%, rgba(112,131,108,.22), transparent 34%),
-        repeating-linear-gradient(4deg, transparent 0 9px, rgba(69,50,34,.022) 10px, transparent 11px);
+      background: transparent;
       color: var(--text); text-align: center; position: relative; overflow: hidden;
-      border-top: 5px solid rgba(141,91,58,.38);
+      border-top: 0;
     }
-    #contacto::after {
-      content: 'Escribime'; position: absolute; right: 5%; bottom: -18px;
-      font-family: var(--script); font-size: clamp(5rem, 10vw, 9rem);
-      color: rgba(104,64,41,.09); transform: rotate(-6deg); pointer-events: none;
-    }
+    #contacto::after { display: none; }
     #contacto .section-label { color: var(--accent-dark); }
     #contacto .section-title { color: var(--text); }
-    #contacto .section-subtitle { color: var(--text-soft); margin: 0 auto 40px; }
-    .contact-cta { position: relative; z-index: 1; }
+    #contacto .section-subtitle { color: var(--text-soft); margin: 0 auto 36px; }
+    .contact-cta {
+      position: relative; z-index: 1; max-width: 860px;
+      padding: 62px 48px; background: rgba(248,242,226,.88);
+      border: 1px solid rgba(78,57,39,.22); box-shadow: var(--shadow-md);
+      transform: rotate(-.35deg);
+    }
     .whatsapp-btn {
       display: inline-flex; align-items: center; gap: 12px;
       padding: 18px 44px; background: var(--wa); color: var(--white);
@@ -492,28 +482,30 @@
 
     /* FOOTER */
     footer {
-      background: #685442; padding: 30px 24px; text-align: center;
-      border-top: 1px solid rgba(255,255,255,.14);
+      background: rgba(238,228,207,.72); padding: 32px 24px; text-align: center;
+      border-top: 1px solid rgba(78,57,39,.20);
     }
     .footer-disclaimer {
       max-width: 600px; margin: 0 auto 12px; font-size: 0.75rem;
-      color: rgba(255,255,255,0.6); line-height: 1.6;
+      color: var(--text-soft); line-height: 1.6;
     }
-    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.55); }
+    .footer-copy { font-size: 0.72rem; color: var(--text-muted); }
     .footer-brand { font-family: var(--script); font-size: 1.25rem; }
 
     /* WHATSAPP FLOAT */
     .whatsapp-float {
-      position: fixed; bottom: 28px; right: 28px; width: 58px; height: 58px;
-      background: var(--wa); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.12); z-index: 90;
-      transition: transform var(--transition), box-shadow var(--transition);
+      position: fixed; bottom: 26px; right: 26px; min-height: 56px;
+      padding: 0 20px; background: var(--wa); color: var(--white); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      box-shadow: 5px 6px 0 rgba(45,54,37,.18); z-index: 90;
+      font-size: .92rem; font-weight: 700;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
     }
     .whatsapp-float:hover {
-      transform: scale(1.06); box-shadow: 0 3px 14px rgba(0,0,0,0.16);
+      transform: translateY(-3px); background: var(--wa-dark); box-shadow: 7px 9px 0 rgba(45,54,37,.15);
     }
-    .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+    .whatsapp-float svg { width: 25px; height: 25px; fill: white; flex-shrink: 0; }
+    .whatsapp-float span { display: block; }
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
@@ -547,12 +539,14 @@
       .step-card, .step-card:nth-child(n) { border-left: 0; border-top: 1px solid var(--accent-border); }
       .hero { min-height: auto; padding: 132px 20px 82px; }
       .hero::after { display: none; }
-      .hero h1 { font-size: clamp(3.1rem, 16vw, 4.8rem); }
+      .hero h1 { font-size: clamp(2.75rem, 13vw, 4rem); }
       .calligraphy-card { padding: 42px 28px; }
       .calligraphy-card blockquote { font-size: 1.4rem; }
       .about-photo { width: calc(100% - 12px); margin-left: 6px; }
-      .whatsapp-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
-      .whatsapp-float svg { width: 24px; height: 24px; }
+      .contact-cta { padding: 48px 24px; transform: none; }
+      .mid-cta { align-items: flex-start; flex-direction: column; }
+      .whatsapp-float { bottom: 16px; right: 16px; min-height: 52px; width: auto; height: auto; padding: 0 15px; }
+      .whatsapp-float svg { width: 23px; height: 23px; }
     }
 
     /* Quien pidio menos animacion en su sistema (mareos, migrana, foco) ve la
@@ -581,7 +575,7 @@
         <a href="#proceso">El proceso</a>
         <a href="#para-quien">Para quién</a>
         <a href="#sobre-mi">Sobre mí</a>
-        <a href="#contacto" class="nav-cta">Contactar</a>
+        <a href="https://wa.me/5492615181788?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20grafoterapia" class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
       </div>
       <button type="button" class="hamburger" id="hamburger"
               aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
@@ -595,16 +589,17 @@
   <!-- HERO -->
   <section class="hero" id="inicio">
     <div class="hero-content">
-      <div class="hero-badge">Adriana Lourdes Sánchez · Reeducación Gráfica</div>
-      <h1>La escritura también<br><em>se puede trabajar</em></h1>
-      <p class="hero-sub">Observo cómo escribís y preparo ejercicios gráficos para trabajar, de manera gradual, los hábitos que quieras revisar.</p>
+      <div class="hero-badge">Adriana Lourdes Sánchez · Grafóloga y grafoterapeuta</div>
+      <h1>Ejercicios gráficos para <em>trabajar la escritura</em></h1>
+      <p class="hero-sub">Para niños desde 4 años, adolescentes y adultos. Empezamos con una muestra de escritura y, a partir de lo observado, preparo ejercicios personalizados.</p>
       <div class="hero-actions">
-        <a href="#contacto" class="btn btn-primary">
+        <a href="https://wa.me/5492615181788?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20grafoterapia" class="btn btn-primary" target="_blank" rel="noopener">
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          Agendar consulta
+          Consultar por WhatsApp
         </a>
-        <a href="#que-es" class="btn btn-secondary">Conocé más</a>
+        <a href="#proceso" class="btn btn-secondary">Cómo son los encuentros</a>
       </div>
+      <p class="hero-note">Podés contarme la edad y qué aspecto de la escritura quieren trabajar.</p>
     </div>
     <div class="hero-scroll">
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
@@ -616,8 +611,8 @@
     <div class="container">
       <div class="split">
         <div class="split-text">
-          <span class="section-label reveal">01 · Punto de partida</span>
-          <h2 class="section-title reveal reveal-delay-1">Qué observo en una escritura</h2>
+          <span class="section-label reveal">Qué es</span>
+          <h2 class="section-title reveal reveal-delay-1">Grafología para observar; grafoterapia para ejercitar</h2>
           <p class="section-subtitle reveal reveal-delay-2">La grafología permite leer características de la escritura. Con esa observación preparo una práctica gráfica personal, sin fórmulas iguales para todos.</p>
           <ul class="feature-list">
             <li class="reveal reveal-delay-2">
@@ -654,8 +649,8 @@
   <section id="proceso">
     <div class="container">
       <div class="section-head">
-        <span class="section-label reveal">02 · Orden de trabajo</span>
-        <h2 class="section-title reveal reveal-delay-1">Primero observo. Después, practicamos.</h2>
+        <span class="section-label reveal">Cómo trabajo</span>
+        <h2 class="section-title reveal reveal-delay-1">De la muestra inicial al seguimiento</h2>
       </div>
       <div class="steps">
         <div class="step-card reveal">
@@ -686,8 +681,8 @@
   <section id="para-quien">
     <div class="container">
       <div class="section-head">
-        <span class="section-label reveal">03 · Según la edad</span>
-        <h2 class="section-title reveal reveal-delay-1">El trabajo cambia con cada etapa</h2>
+        <span class="section-label reveal">Para quién</span>
+        <h2 class="section-title reveal reveal-delay-1">Niños, adolescentes y adultos</h2>
       </div>
       <div class="audience-grid">
         <div class="audience-card reveal">
@@ -727,6 +722,10 @@
           </ul>
         </div>
       </div>
+      <div class="mid-cta reveal">
+        <p>¿Querés consultar por un caso en particular?</p>
+        <a href="https://wa.me/5492615181788?text=Hola%2C%20quiero%20consultar%20por%20un%20caso%20de%20grafoterapia" target="_blank" rel="noopener">Escribirme por WhatsApp →</a>
+      </div>
     </div>
   </section>
 
@@ -738,7 +737,7 @@
           <img src="adriana.jpg" alt="Adriana Lourdes Sánchez, grafóloga y grafoterapeuta" width="800" height="447" loading="lazy" decoding="async">
         </div>
         <div class="about-text reveal reveal-delay-1">
-          <span class="section-label">04 · Quién acompaña</span>
+          <span class="section-label">Sobre Adriana</span>
           <h2 class="about-name">Adriana Lourdes Sánchez</h2>
           <span class="credential">Docente Nivel Primario · Grafóloga · Grafoterapeuta</span>
           <p>Mi formación combina docencia, grafología y grafoterapia. Trabajo con niños, adolescentes y adultos, y preparo los ejercicios a partir del análisis de cada escritura.</p>
@@ -759,8 +758,8 @@
   <section id="testimonios">
     <div class="container">
       <div class="section-head">
-        <span class="section-label reveal">05 · En primera persona</span>
-        <h2 class="section-title reveal reveal-delay-1">Lo que cuentan después de practicar</h2>
+        <span class="section-label reveal">Testimonios</span>
+        <h2 class="section-title reveal reveal-delay-1">Qué cuentan quienes hicieron el proceso</h2>
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card reveal">
@@ -806,9 +805,9 @@
   <!-- CONTACTO -->
   <section id="contacto">
     <div class="container contact-cta">
-      <span class="section-label reveal">06 · Primer contacto</span>
-      <h2 class="section-title reveal reveal-delay-1">Podemos empezar por una conversación</h2>
-      <p class="section-subtitle reveal reveal-delay-2">Contame por WhatsApp para quién es la consulta y qué les gustaría trabajar.</p>
+      <span class="section-label reveal">Consultas</span>
+      <h2 class="section-title reveal reveal-delay-1">Escribime por WhatsApp</h2>
+      <p class="section-subtitle reveal reveal-delay-2">Decime la edad de la persona y qué les gustaría trabajar. Te respondo por el mismo medio.</p>
       <div class="reveal reveal-delay-3">
         <a href="https://wa.me/5492615181788?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20la%20grafoterapia" class="whatsapp-btn" target="_blank" rel="noopener">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -830,6 +829,7 @@
   <!-- WHATSAPP FLOAT -->
   <a href="https://wa.me/5492615181788?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20la%20grafoterapia" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
     <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
   </a>
 
   <script>

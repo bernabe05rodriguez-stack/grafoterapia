@@ -7,6 +7,7 @@ COPY server.js ./
 COPY index.html ./
 COPY adriana.jpg ./
 COPY og-image.jpg ./
+COPY cuaderno-bg.webp ./
 
 EXPOSE 80
 CMD ["node", "server.js"]

@@ -23,6 +23,7 @@ Sin base de datos, sin estado, sin formularios: todo el contacto sale por `wa.me
 | `server.js` | Express: rutas, cabeceras de seguridad, gzip, cache |
 | `adriana.jpg` | Foto de la sección "Sobre mí" (800×447) |
 | `og-image.jpg` | Preview al compartir el link (1200×630, la piden WhatsApp/Facebook) |
+| `cuaderno-bg.webp` | Fondo único de cuaderno ilustrado (3840×2160) |
 | `Dockerfile` | Imagen de producción — **copia los archivos uno por uno** |
 
 ## Desarrollo local
