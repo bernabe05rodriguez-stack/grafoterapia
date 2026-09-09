@@ -196,7 +196,7 @@
     .hero {
       min-height: 100vh; display: flex; align-items: center;
       position: relative; padding: 130px 24px 90px; overflow: hidden;
-      border-bottom: 1px solid rgba(78,57,39,.18);
+      border-bottom: 0;
     }
     .hero::before, .hero::after { display: none; }
     .hero-content {
@@ -248,7 +248,7 @@
 
     /* SECTIONS */
     section { padding: 104px 24px; position: relative; }
-    section:not(.hero) { border-bottom: 1px solid rgba(78,57,39,.14); }
+    section:not(.hero) { border-bottom: 0; }
     .container { max-width: 1100px; margin: 0 auto; }
     .section-label {
       display: inline-block; font-size: 0.73rem; font-weight: 600;
@@ -375,7 +375,7 @@
     .mid-cta {
       margin-top: 48px; padding: 22px 26px; display: flex; align-items: center;
       justify-content: space-between; gap: 24px; flex-wrap: wrap;
-      border-block: 1px solid var(--accent-border); background: rgba(248,242,226,.58);
+      border-block: 1px solid var(--accent-border); background: transparent;
     }
     .mid-cta p { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; }
     .mid-cta a { color: var(--wa-dark); font-weight: 700; border-bottom: 2px solid var(--wa); }
@@ -463,9 +463,9 @@
     #contacto .section-subtitle { color: var(--text-soft); margin: 0 auto 36px; }
     .contact-cta {
       position: relative; z-index: 1; max-width: 860px;
-      padding: 62px 48px; background: rgba(248,242,226,.88);
-      border: 1px solid rgba(78,57,39,.22); box-shadow: var(--shadow-md);
-      transform: rotate(-.35deg);
+      padding: 62px 48px; background: transparent;
+      border-block: 1px solid rgba(78,57,39,.22); border-inline: 0; box-shadow: none;
+      transform: none;
     }
     .whatsapp-btn {
       display: inline-flex; align-items: center; gap: 12px;
@@ -482,7 +482,7 @@
 
     /* FOOTER */
     footer {
-      background: rgba(238,228,207,.72); padding: 32px 24px; text-align: center;
+      background: transparent; padding: 32px 24px; text-align: center;
       border-top: 1px solid rgba(78,57,39,.20);
     }
     .footer-disclaimer {
