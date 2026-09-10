@@ -113,6 +113,21 @@
     }
     body::before { display: none; }
 
+    .background-sketch {
+      position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0;
+      pointer-events: none; overflow: visible; opacity: .64;
+    }
+    main, footer { position: relative; z-index: 1; }
+    .background-sketch .draw {
+      stroke: #574b3b; stroke-width: 2.4; vector-effect: non-scaling-stroke;
+    }
+    .background-sketch .draw.rust { stroke: #945f3d; }
+    .background-sketch .draw.sage { stroke: #61755e; }
+    .background-sketch .draw.light { stroke-width: 1.2; opacity: .62; }
+    .background-sketch .sketch-note { font-size: 46px; opacity: .32; }
+    .js .background-sketch .draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .js .background-sketch .sketch-note { opacity: 0; }
+
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
@@ -539,6 +554,7 @@
       .step-card, .step-card:nth-child(n) { border-left: 0; border-top: 1px solid var(--accent-border); }
       .hero { min-height: auto; padding: 132px 20px 82px; }
       .hero::after { display: none; }
+      .background-sketch { opacity: .46; }
       .hero h1 { font-size: clamp(2.75rem, 13vw, 4rem); }
       .calligraphy-card { padding: 42px 28px; }
       .calligraphy-card blockquote { font-size: 1.4rem; }
@@ -559,10 +575,69 @@
         transition-duration: 0.01ms !important;
       }
       .js .reveal { opacity: 1; transform: none; clip-path: inset(0); filter: none; }
+      .js .background-sketch .draw { stroke-dashoffset: 0; }
+      .js .background-sketch .sketch-note { opacity: .32; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Trazos vectoriales del cuaderno. Con JS se dibujan según el avance de lectura. -->
+  <svg class="background-sketch" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g class="sketch-ink" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
+      <!-- Clip de papel -->
+      <path class="draw" pathLength="1" data-start="0" data-end=".12" d="M150 124c-38-45-91 9-55 45l80 80c51 51 124-24 73-75l-91-91c-29-29-76 15-47 44l76 76"/>
+      <path class="draw light" pathLength="1" data-start=".03" data-end=".15" d="M139 113c-50-45-110 24-61 73l84 84"/>
+
+      <!-- Pluma estilográfica -->
+      <path class="draw rust" pathLength="1" data-start=".08" data-end=".25" d="M1575 110l198 198 36-37-198-197z"/>
+      <path class="draw rust" pathLength="1" data-start=".12" data-end=".29" d="M1575 110l-38-53-25 75 45 44z"/>
+      <path class="draw rust" pathLength="1" data-start=".15" data-end=".31" d="M1530 88l20 20m223 200 40 39"/>
+      <path class="draw light rust" pathLength="1" data-start=".18" data-end=".34" d="M1600 102l198 198"/>
+
+      <!-- Regla con marcas -->
+      <path class="draw sage" pathLength="1" data-start=".18" data-end=".38" d="M45 474l286-93 24 73-286 93z"/>
+      <path class="draw sage" pathLength="1" data-start=".22" data-end=".40" d="M94 458l-10-29m39 19-7-22m38 12-11-31m41 20-7-22m38 11-11-30m42 19-7-22m39 11-10-29"/>
+
+      <!-- Lupa sobre letras -->
+      <path class="draw" pathLength="1" data-start=".28" data-end=".48" d="M1650 448c0-66 54-120 120-120s120 54 120 120-54 120-120 120-120-54-120-120z"/>
+      <path class="draw" pathLength="1" data-start=".34" data-end=".52" d="M1685 533l-106 107c-20 20 11 52 32 31l106-107"/>
+      <path class="draw light" pathLength="1" data-start=".38" data-end=".53" d="M1680 414c18-34 52-54 90-54"/>
+      <path class="draw rust" pathLength="1" data-start=".40" data-end=".55" d="M1721 477c18-58 28-58 46 0m-35-23h24m36 23v-69m0 47 31-34m-22 25 26 31"/>
+
+      <!-- Sobre y carta -->
+      <path class="draw rust" pathLength="1" data-start=".42" data-end=".62" d="M80 720l266-22 14 168-266 22z"/>
+      <path class="draw rust" pathLength="1" data-start=".46" data-end=".64" d="M82 720l140 92 124-114m-252 190 104-90m162 68-111-72"/>
+      <path class="draw light rust" pathLength="1" data-start=".50" data-end=".66" d="M120 680l186-15 5 39"/>
+
+      <!-- Rama y hojas -->
+      <path class="draw sage" pathLength="1" data-start=".52" data-end=".78" d="M1810 660c-92 92-131 201-145 337"/>
+      <path class="draw sage" pathLength="1" data-start=".56" data-end=".72" d="M1780 699c-64-5-95 20-112 69 58 2 91-20 112-69zm-54 88c54-5 85 17 103 59-51 5-83-14-103-59zm-28 82c-54 1-82 25-95 68 51 0 80-21 95-68zm-15 66c45-2 72 17 88 52-43 4-70-13-88-52z"/>
+      <path class="draw light sage" pathLength="1" data-start=".64" data-end=".80" d="M1684 752l75-42m-53 100 92 26m-111 68-61 20m51 36 68 19"/>
+
+      <!-- Tintero -->
+      <path class="draw" pathLength="1" data-start=".64" data-end=".83" d="M1428 827h116l31 153h-178z"/>
+      <path class="draw" pathLength="1" data-start=".68" data-end=".84" d="M1448 786h76l13 41h-102z"/>
+      <path class="draw light" pathLength="1" data-start=".72" data-end=".86" d="M1410 925c48-17 103 16 151-3"/>
+      <path class="draw rust" pathLength="1" data-start=".76" data-end=".88" d="M1582 972c24-12 47 12 28 31-20 19-52-11-28-31zm54 35c14-7 28 8 17 19-12 11-31-7-17-19z"/>
+
+      <!-- Libro abierto -->
+      <path class="draw sage" pathLength="1" data-start=".72" data-end=".92" d="M364 887c94-39 183-20 245 34 61-54 151-73 244-34v153c-91-35-177-18-244 31-68-49-153-66-245-31z"/>
+      <path class="draw sage" pathLength="1" data-start=".76" data-end=".94" d="M609 921v150m-215-146c70-21 136-5 183 25m-183 28c70-20 136-4 183 26m246-79c-70-21-136-5-183 25m183 28c-70-20-136-4-183 26"/>
+      <path class="draw light sage" pathLength="1" data-start=".82" data-end=".96" d="M344 907v154c101-28 190-10 265 40 74-50 164-68 264-40V907"/>
+
+      <!-- Flechas, subrayados y gesto final -->
+      <path class="draw rust" pathLength="1" data-start=".20" data-end=".38" d="M455 246c91-33 181-30 267-5m-20-18 20 18-27 9"/>
+      <path class="draw sage" pathLength="1" data-start=".44" data-end=".62" d="M1180 584c95 22 172 12 244-23"/>
+      <path class="draw" pathLength="1" data-start=".86" data-end="1" d="M916 1006c144-30 287-23 428 18 66 19 114 4 142-28-13 45 12 69 74 71"/>
+    </g>
+    <g class="sketch-notes" font-family="'Pinyon Script', cursive" fill="#684029">
+      <text class="sketch-note" data-start=".10" data-end=".24" x="390" y="160" transform="rotate(-5 390 160)">observar</text>
+      <text class="sketch-note" data-start=".31" data-end=".46" x="1480" y="395" transform="rotate(4 1480 395)">trazo · ritmo · espacio</text>
+      <text class="sketch-note" data-start=".50" data-end=".66" x="490" y="700" transform="rotate(-3 490 700)">practicar</text>
+      <text class="sketch-note" data-start=".78" data-end=".94" x="1040" y="970" transform="rotate(3 1040 970)">volver a mirar</text>
+    </g>
+  </svg>
 
   <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
@@ -836,18 +911,41 @@
     const navbar    = document.getElementById('navbar');
     const navLinks  = document.getElementById('navLinks');
     const hamburger = document.getElementById('hamburger');
+    const backgroundStrokes = [...document.querySelectorAll('.background-sketch .draw')];
+    const backgroundNotes = [...document.querySelectorAll('.background-sketch .sketch-note')];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    // Fondo del nav al bajar. passive: le avisa al navegador que no vamos a
-    // frenar el scroll, asi no espera al handler para dibujar.
+    function stageProgress(element, pageProgress) {
+      const start = Number(element.dataset.start || 0);
+      const end = Number(element.dataset.end || 1);
+      return Math.max(0, Math.min(1, (pageProgress - start) / (end - start)));
+    }
+
+    function drawNotebookBackground() {
+      const available = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const pageProgress = reduceMotion.matches ? 1 : Math.min(1, window.scrollY / available);
+      backgroundStrokes.forEach(path => {
+        path.style.strokeDashoffset = String(1 - stageProgress(path, pageProgress));
+      });
+      backgroundNotes.forEach(note => {
+        note.style.opacity = String(stageProgress(note, pageProgress) * 0.32);
+      });
+    }
+
+    // Fondo del nav y dibujos del cuaderno: un solo frame por evento de scroll.
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
+        drawNotebookBackground();
         ticking = false;
       });
     }, { passive: true });
+    window.addEventListener('resize', drawNotebookBackground, { passive: true });
+    reduceMotion.addEventListener('change', drawNotebookBackground);
+    drawNotebookBackground();
 
     // --- Menu movil ---
     function setMenu(open) {
