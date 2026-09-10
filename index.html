@@ -121,9 +121,19 @@
     .background-sketch .draw {
       stroke: #574b3b; stroke-width: 2.4; vector-effect: non-scaling-stroke;
     }
+    .background-sketch .sketch-ink .draw { filter: url(#pencilTexture); }
     .background-sketch .draw.rust { stroke: #945f3d; }
     .background-sketch .draw.sage { stroke: #61755e; }
     .background-sketch .draw.light { stroke-width: 1.2; opacity: .62; }
+    .background-sketch .paint-layer .paint {
+      stroke-width: 23; opacity: .19; vector-effect: non-scaling-stroke;
+      filter: url(#paintTexture); mix-blend-mode: multiply;
+    }
+    .background-sketch .paint-layer .paint.ochre { stroke: #c39354; }
+    .background-sketch .paint-layer .paint.rust { stroke: #a85f43; }
+    .background-sketch .paint-layer .paint.sage { stroke: #6f8a6b; }
+    .background-sketch .paint-layer .paint.blue { stroke: #65889a; }
+    .background-sketch .paint-layer .paint.light-paint { stroke-width: 13; opacity: .14; }
     .background-sketch .sketch-note { font-size: 46px; opacity: .32; }
     .js .background-sketch .draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
     .js .background-sketch .sketch-note { opacity: 0; }
@@ -583,7 +593,33 @@
 <body>
 
   <!-- Trazos vectoriales del cuaderno. Con JS se dibujan según el avance de lectura. -->
-  <svg class="background-sketch" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <svg class="background-sketch" viewBox="0 0 3840 2160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <!-- El desplazamiento rompe la perfección digital de cada línea. -->
+      <filter id="pencilTexture" x="-12%" y="-12%" width="124%" height="124%">
+        <feTurbulence type="fractalNoise" baseFrequency=".018 .11" numOctaves="2" seed="17" result="grain"/>
+        <feDisplacementMap in="SourceGraphic" in2="grain" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <!-- Dos capas de ruido y un desenfoque mínimo producen un borde de acuarela. -->
+      <filter id="paintTexture" x="-18%" y="-18%" width="136%" height="136%">
+        <feTurbulence type="fractalNoise" baseFrequency=".012 .075" numOctaves="3" seed="31" result="wash"/>
+        <feDisplacementMap in="SourceGraphic" in2="wash" scale="7" xChannelSelector="R" yChannelSelector="B" result="rough"/>
+        <feGaussianBlur in="rough" stdDeviation=".45"/>
+      </filter>
+    </defs>
+    <g transform="scale(2)">
+      <!-- Pinceladas anchas: se revelan con el scroll antes de los dibujos. -->
+      <g class="paint-layer" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path class="draw paint ochre" pathLength="1" data-start="0" data-end=".11" d="M54 274c77-31 171-35 257-10"/>
+        <path class="draw paint rust" pathLength="1" data-start=".07" data-end=".23" d="M1517 178c88-44 209-18 291 73"/>
+        <path class="draw paint sage" pathLength="1" data-start=".17" data-end=".34" d="M38 535c91-90 194-131 315-125"/>
+        <path class="draw paint blue" pathLength="1" data-start=".26" data-end=".44" d="M1615 515c75 62 175 75 273 31"/>
+        <path class="draw paint ochre" pathLength="1" data-start=".39" data-end=".58" d="M55 805c92-55 204-71 316-41"/>
+        <path class="draw paint sage" pathLength="1" data-start=".49" data-end=".70" d="M1774 653c-39 103-63 224-62 347"/>
+        <path class="draw paint rust" pathLength="1" data-start=".61" data-end=".80" d="M1374 967c72-42 155-48 236-19"/>
+        <path class="draw paint blue" pathLength="1" data-start=".70" data-end=".91" d="M342 1031c167-83 352-81 533 0"/>
+        <path class="draw paint ochre light-paint" pathLength="1" data-start=".82" data-end="1" d="M896 1038c212-42 427-27 631 34"/>
+      </g>
     <g class="sketch-ink" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
       <!-- Clip de papel -->
       <path class="draw" pathLength="1" data-start="0" data-end=".12" d="M150 124c-38-45-91 9-55 45l80 80c51 51 124-24 73-75l-91-91c-29-29-76 15-47 44l76 76"/>
@@ -636,6 +672,7 @@
       <text class="sketch-note" data-start=".31" data-end=".46" x="1480" y="395" transform="rotate(4 1480 395)">trazo · ritmo · espacio</text>
       <text class="sketch-note" data-start=".50" data-end=".66" x="490" y="700" transform="rotate(-3 490 700)">practicar</text>
       <text class="sketch-note" data-start=".78" data-end=".94" x="1040" y="970" transform="rotate(3 1040 970)">volver a mirar</text>
+    </g>
     </g>
   </svg>
 
