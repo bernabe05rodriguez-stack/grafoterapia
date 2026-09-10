@@ -82,7 +82,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 18px; }
 
     /* El nav mide 72px y es fijo: sin esto el titulo de cada seccion queda debajo. */
     section[id] { scroll-margin-top: 88px; }
@@ -133,7 +133,6 @@
     .background-sketch .paint-layer .paint.rust { stroke: #a85f43; }
     .background-sketch .paint-layer .paint.sage { stroke: #6f8a6b; }
     .background-sketch .paint-layer .paint.blue { stroke: #65889a; }
-    .background-sketch .paint-layer .paint.light-paint { stroke-width: 13; opacity: .14; }
     .background-sketch .sketch-note { font-size: 46px; opacity: .32; }
     .js .background-sketch .draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
     .js .background-sketch .sketch-note { opacity: 0; }
@@ -191,7 +190,7 @@
     }
     .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a {
-      font-size: 0.85rem; font-weight: 500; color: var(--text-soft);
+      font-size: 0.94rem; font-weight: 500; color: var(--text-soft);
       transition: color var(--transition); letter-spacing: 0.02em;
     }
     .nav-links a:hover { color: var(--accent); }
@@ -199,7 +198,7 @@
       background: transparent !important; color: var(--accent-dark) !important;
       padding: 8px 2px 5px; border-radius: 0;
       border-bottom: 2px solid var(--accent);
-      font-size: 0.85rem !important; font-weight: 600 !important;
+      font-size: 0.94rem !important; font-weight: 600 !important;
       transition: color var(--transition), border-color var(--transition) !important;
     }
     .nav-cta:hover { background: transparent !important; color: var(--text) !important; border-color: var(--text); }
@@ -230,7 +229,7 @@
     }
     .hero-badge {
       display: inline-block; position: relative;
-      font-size: 0.74rem; font-weight: 600; color: var(--accent-dark);
+      font-size: 0.82rem; font-weight: 600; color: var(--accent-dark);
       letter-spacing: 0.16em; text-transform: uppercase;
       margin-bottom: 32px; animation: fadeIn 1s ease 0.3s both;
     }
@@ -256,11 +255,11 @@
     }
     .hero-note {
       margin: 22px 0 0 4px; max-width: 520px; color: var(--text-muted);
-      font-size: .84rem; animation: fadeIn 1s ease 1.05s both;
+      font-size: .94rem; animation: fadeIn 1s ease 1.05s both;
     }
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
-      padding: 14px 28px; border-radius: 2px 12px 3px 9px; font-size: 0.95rem;
+      padding: 14px 28px; border-radius: 2px 12px 3px 9px; font-size: 1.02rem;
       font-weight: 600; font-family: var(--sans); cursor: pointer;
       border: none; transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
     }
@@ -276,7 +275,7 @@
     section:not(.hero) { border-bottom: 0; }
     .container { max-width: 1100px; margin: 0 auto; }
     .section-label {
-      display: inline-block; font-size: 0.73rem; font-weight: 600;
+      display: inline-block; font-size: 0.82rem; font-weight: 600;
       color: var(--accent-dark); letter-spacing: 0.16em; text-transform: uppercase;
       margin-bottom: 16px; padding-left: 34px; position: relative;
     }
@@ -290,7 +289,7 @@
       font-weight: 500; line-height: 1.02; letter-spacing: -0.025em; margin-bottom: 22px;
     }
     .section-subtitle {
-      font-size: 1.05rem; color: var(--text-soft); max-width: 600px;
+      font-size: 1.12rem; color: var(--text-soft); max-width: 640px;
       line-height: 1.8; font-weight: 300;
     }
 
@@ -331,8 +330,8 @@
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .feature-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; }
-    .feature-text h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
-    .feature-text p { font-size: 0.85rem; color: var(--text-soft); line-height: 1.6; }
+    .feature-text h3 { font-size: 1.02rem; font-weight: 600; margin-bottom: 3px; }
+    .feature-text p { font-size: 0.96rem; color: var(--text-soft); line-height: 1.62; }
 
     /* PROCESO: secuencia como anotaciones al margen, sin tarjetas clonadas. */
     #proceso {
@@ -359,7 +358,7 @@
     .step-card h3 {
       font-family: var(--serif); font-size: 1.35rem; font-weight: 600; margin-bottom: 10px;
     }
-    .step-card p { font-size: 0.83rem; color: var(--text-soft); line-height: 1.7; }
+    .step-card p { font-size: 0.95rem; color: var(--text-soft); line-height: 1.7; }
 
     /* PARA QUIÉN */
     #para-quien { background: transparent; }
@@ -381,15 +380,15 @@
     }
     .audience-icon svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; }
     .audience-card h3 {
-      font-family: var(--serif); font-size: 1.25rem; font-weight: 600; margin-bottom: 6px;
+      font-family: var(--serif); font-size: 1.48rem; font-weight: 600; margin-bottom: 6px;
     }
     .audience-card .age {
-      font-size: 0.78rem; color: var(--accent); font-weight: 500;
+      font-size: 0.9rem; color: var(--accent); font-weight: 600;
       margin-bottom: 12px; letter-spacing: 0.05em;
     }
     .audience-card ul { list-style: none; margin-top: 12px; text-align: left; }
     .audience-card ul li {
-      font-size: 0.83rem; color: var(--text-soft); padding: 5px 0;
+      font-size: 0.96rem; color: var(--text-soft); padding: 7px 0;
       border-bottom: 1px solid rgba(0,0,0,0.04);
       display: flex; align-items: center; gap: 8px;
     }
@@ -440,13 +439,13 @@
       margin-bottom: 20px; display: block;
     }
     .about-text p {
-      font-size: 0.92rem; color: var(--text-soft); line-height: 1.8; margin-bottom: 14px;
+      font-size: 1.02rem; color: var(--text-soft); line-height: 1.8; margin-bottom: 14px;
     }
     .credential-badges { display: flex; flex-wrap: wrap; gap: 9px 18px; margin-top: 24px; }
     .credential-badge {
       padding: 3px 0; background: transparent;
       border: 0; border-bottom: 1px solid var(--accent-border); border-radius: 0;
-      font-size: 0.75rem; font-weight: 500; color: var(--accent-dark);
+      font-size: 0.86rem; font-weight: 500; color: var(--accent-dark);
       letter-spacing: 0.03em;
     }
     .credential-badge svg { width: 14px; height: 14px; stroke: var(--accent); fill: none; }
@@ -470,11 +469,11 @@
     .testimonial-stars { display: none; }
     .testimonial-stars svg { width: 14px; height: 14px; fill: var(--accent-light); }
     .testimonial-card p {
-      font-size: 0.88rem; color: var(--text-soft); line-height: 1.7;
+      font-size: 0.98rem; color: var(--text-soft); line-height: 1.72;
       font-style: italic; margin-bottom: 16px;
     }
-    .testimonial-author { font-size: 0.83rem; font-weight: 600; color: var(--text); }
-    .testimonial-detail { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .testimonial-author { font-size: 0.94rem; font-weight: 600; color: var(--text); }
+    .testimonial-detail { font-size: 0.86rem; color: var(--text-muted); margin-top: 3px; }
 
     /* CONTACTO */
     #contacto {
@@ -503,7 +502,7 @@
       background: var(--wa-dark);
     }
     .whatsapp-btn svg { width: 22px; height: 22px; fill: currentColor; }
-    .contact-info { margin-top: 28px; font-size: 0.85rem; color: var(--text-soft); }
+    .contact-info { margin-top: 28px; font-size: 0.96rem; color: var(--text-soft); }
 
     /* FOOTER */
     footer {
@@ -511,10 +510,10 @@
       border-top: 1px solid rgba(78,57,39,.20);
     }
     .footer-disclaimer {
-      max-width: 600px; margin: 0 auto 12px; font-size: 0.75rem;
+      max-width: 650px; margin: 0 auto 12px; font-size: 0.85rem;
       color: var(--text-soft); line-height: 1.6;
     }
-    .footer-copy { font-size: 0.72rem; color: var(--text-muted); }
+    .footer-copy { font-size: 0.82rem; color: var(--text-muted); }
     .footer-brand { font-family: var(--script); font-size: 1.25rem; }
 
     /* WHATSAPP FLOAT */
@@ -545,6 +544,7 @@
     }
 
     @media (max-width: 768px) {
+      html { font-size: 17px; }
       section { padding: 72px 20px; }
       .nav-links {
         display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -612,39 +612,31 @@
       <g class="paint-layer" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path class="draw paint ochre" pathLength="1" data-start="0" data-end=".11" d="M54 274c77-31 171-35 257-10"/>
         <path class="draw paint rust" pathLength="1" data-start=".07" data-end=".23" d="M1517 178c88-44 209-18 291 73"/>
-        <path class="draw paint sage" pathLength="1" data-start=".17" data-end=".34" d="M38 535c91-90 194-131 315-125"/>
         <path class="draw paint blue" pathLength="1" data-start=".26" data-end=".44" d="M1615 515c75 62 175 75 273 31"/>
-        <path class="draw paint ochre" pathLength="1" data-start=".39" data-end=".58" d="M55 805c92-55 204-71 316-41"/>
         <path class="draw paint sage" pathLength="1" data-start=".49" data-end=".70" d="M1774 653c-39 103-63 224-62 347"/>
         <path class="draw paint rust" pathLength="1" data-start=".61" data-end=".80" d="M1374 967c72-42 155-48 236-19"/>
         <path class="draw paint blue" pathLength="1" data-start=".70" data-end=".91" d="M342 1031c167-83 352-81 533 0"/>
-        <path class="draw paint ochre light-paint" pathLength="1" data-start=".82" data-end="1" d="M896 1038c212-42 427-27 631 34"/>
       </g>
     <g class="sketch-ink" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
       <!-- Clip de papel -->
       <path class="draw" pathLength="1" data-start="0" data-end=".12" d="M150 124c-38-45-91 9-55 45l80 80c51 51 124-24 73-75l-91-91c-29-29-76 15-47 44l76 76"/>
       <path class="draw light" pathLength="1" data-start=".03" data-end=".15" d="M139 113c-50-45-110 24-61 73l84 84"/>
+      <path class="draw light" pathLength="1" data-start=".05" data-end=".17" d="M111 151c-13 13-13 34 0 47l61 61"/>
 
       <!-- Pluma estilográfica -->
       <path class="draw rust" pathLength="1" data-start=".08" data-end=".25" d="M1575 110l198 198 36-37-198-197z"/>
       <path class="draw rust" pathLength="1" data-start=".12" data-end=".29" d="M1575 110l-38-53-25 75 45 44z"/>
       <path class="draw rust" pathLength="1" data-start=".15" data-end=".31" d="M1530 88l20 20m223 200 40 39"/>
       <path class="draw light rust" pathLength="1" data-start=".18" data-end=".34" d="M1600 102l198 198"/>
-
-      <!-- Regla con marcas -->
-      <path class="draw sage" pathLength="1" data-start=".18" data-end=".38" d="M45 474l286-93 24 73-286 93z"/>
-      <path class="draw sage" pathLength="1" data-start=".22" data-end=".40" d="M94 458l-10-29m39 19-7-22m38 12-11-31m41 20-7-22m38 11-11-30m42 19-7-22m39 11-10-29"/>
+      <path class="draw light rust" pathLength="1" data-start=".20" data-end=".35" d="M1599 133l-42 43m182 68 37-38m-218-31 216 216"/>
+      <path class="draw light rust" pathLength="1" data-start=".22" data-end=".36" d="M1512 132l40-23 5 67-45-44z"/>
 
       <!-- Lupa sobre letras -->
       <path class="draw" pathLength="1" data-start=".28" data-end=".48" d="M1650 448c0-66 54-120 120-120s120 54 120 120-54 120-120 120-120-54-120-120z"/>
       <path class="draw" pathLength="1" data-start=".34" data-end=".52" d="M1685 533l-106 107c-20 20 11 52 32 31l106-107"/>
       <path class="draw light" pathLength="1" data-start=".38" data-end=".53" d="M1680 414c18-34 52-54 90-54"/>
       <path class="draw rust" pathLength="1" data-start=".40" data-end=".55" d="M1721 477c18-58 28-58 46 0m-35-23h24m36 23v-69m0 47 31-34m-22 25 26 31"/>
-
-      <!-- Sobre y carta -->
-      <path class="draw rust" pathLength="1" data-start=".42" data-end=".62" d="M80 720l266-22 14 168-266 22z"/>
-      <path class="draw rust" pathLength="1" data-start=".46" data-end=".64" d="M82 720l140 92 124-114m-252 190 104-90m162 68-111-72"/>
-      <path class="draw light rust" pathLength="1" data-start=".50" data-end=".66" d="M120 680l186-15 5 39"/>
+      <path class="draw light" pathLength="1" data-start=".42" data-end=".56" d="M1668 448c0-56 46-102 102-102s102 46 102 102-46 102-102 102"/>
 
       <!-- Rama y hojas -->
       <path class="draw sage" pathLength="1" data-start=".52" data-end=".78" d="M1810 660c-92 92-131 201-145 337"/>
@@ -656,21 +648,21 @@
       <path class="draw" pathLength="1" data-start=".68" data-end=".84" d="M1448 786h76l13 41h-102z"/>
       <path class="draw light" pathLength="1" data-start=".72" data-end=".86" d="M1410 925c48-17 103 16 151-3"/>
       <path class="draw rust" pathLength="1" data-start=".76" data-end=".88" d="M1582 972c24-12 47 12 28 31-20 19-52-11-28-31zm54 35c14-7 28 8 17 19-12 11-31-7-17-19z"/>
+      <path class="draw light" pathLength="1" data-start=".78" data-end=".89" d="M1428 827l43 47h31l42-47m-116 0-31 153m147-153 31 153"/>
+      <path class="draw light rust" pathLength="1" data-start=".80" data-end=".90" d="M1450 805h74m-88 22h101"/>
 
       <!-- Libro abierto -->
       <path class="draw sage" pathLength="1" data-start=".72" data-end=".92" d="M364 887c94-39 183-20 245 34 61-54 151-73 244-34v153c-91-35-177-18-244 31-68-49-153-66-245-31z"/>
       <path class="draw sage" pathLength="1" data-start=".76" data-end=".94" d="M609 921v150m-215-146c70-21 136-5 183 25m-183 28c70-20 136-4 183 26m246-79c-70-21-136-5-183 25m183 28c-70-20-136-4-183 26"/>
       <path class="draw light sage" pathLength="1" data-start=".82" data-end=".96" d="M344 907v154c101-28 190-10 265 40 74-50 164-68 264-40V907"/>
+      <path class="draw light sage" pathLength="1" data-start=".84" data-end=".97" d="M420 951c53-11 104 1 151 29m76 0c47-28 98-40 151-29m-377 56c52-9 101 2 146 27m84 0c45-25 94-36 146-27"/>
 
-      <!-- Flechas, subrayados y gesto final -->
-      <path class="draw rust" pathLength="1" data-start=".20" data-end=".38" d="M455 246c91-33 181-30 267-5m-20-18 20 18-27 9"/>
-      <path class="draw sage" pathLength="1" data-start=".44" data-end=".62" d="M1180 584c95 22 172 12 244-23"/>
+      <!-- Gesto final -->
       <path class="draw" pathLength="1" data-start=".86" data-end="1" d="M916 1006c144-30 287-23 428 18 66 19 114 4 142-28-13 45 12 69 74 71"/>
     </g>
     <g class="sketch-notes" font-family="'Pinyon Script', cursive" fill="#684029">
       <text class="sketch-note" data-start=".10" data-end=".24" x="390" y="160" transform="rotate(-5 390 160)">observar</text>
       <text class="sketch-note" data-start=".31" data-end=".46" x="1480" y="395" transform="rotate(4 1480 395)">trazo · ritmo · espacio</text>
-      <text class="sketch-note" data-start=".50" data-end=".66" x="490" y="700" transform="rotate(-3 490 700)">practicar</text>
       <text class="sketch-note" data-start=".78" data-end=".94" x="1040" y="970" transform="rotate(3 1040 970)">volver a mirar</text>
     </g>
     </g>
