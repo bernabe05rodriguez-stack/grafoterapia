@@ -125,6 +125,7 @@
     .background-sketch .draw.rust { stroke: #945f3d; }
     .background-sketch .draw.sage { stroke: #61755e; }
     .background-sketch .draw.light { stroke-width: 1.2; opacity: .62; }
+    .background-sketch .draw.strong { stroke-width: 3.2; }
     .background-sketch .paint-layer .paint {
       stroke-width: 23; opacity: .19; vector-effect: non-scaling-stroke;
       filter: url(#paintTexture); mix-blend-mode: multiply;
@@ -610,55 +611,43 @@
     <g transform="scale(2)">
       <!-- Pinceladas anchas: se revelan con el scroll antes de los dibujos. -->
       <g class="paint-layer" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path class="draw paint ochre" pathLength="1" data-start="0" data-end=".11" d="M54 274c77-31 171-35 257-10"/>
-        <path class="draw paint rust" pathLength="1" data-start=".07" data-end=".23" d="M1517 178c88-44 209-18 291 73"/>
-        <path class="draw paint blue" pathLength="1" data-start=".26" data-end=".44" d="M1615 515c75 62 175 75 273 31"/>
-        <path class="draw paint sage" pathLength="1" data-start=".49" data-end=".70" d="M1774 653c-39 103-63 224-62 347"/>
-        <path class="draw paint rust" pathLength="1" data-start=".61" data-end=".80" d="M1374 967c72-42 155-48 236-19"/>
-        <path class="draw paint blue" pathLength="1" data-start=".70" data-end=".91" d="M342 1031c167-83 352-81 533 0"/>
+        <path class="draw paint rust" pathLength="1" data-start=".03" data-end=".24" d="M1494 292c94-123 202-196 326-217"/>
+        <path class="draw paint sage" pathLength="1" data-start=".30" data-end=".55" d="M1792 570c-51 105-86 225-105 360"/>
+        <path class="draw paint ochre" pathLength="1" data-start=".54" data-end=".78" d="M1357 959c88-43 183-46 278-8"/>
+        <path class="draw paint blue" pathLength="1" data-start=".69" data-end=".94" d="M306 1027c190-82 385-78 582 12"/>
       </g>
     <g class="sketch-ink" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
-      <!-- Clip de papel -->
-      <path class="draw" pathLength="1" data-start="0" data-end=".12" d="M150 124c-38-45-91 9-55 45l80 80c51 51 124-24 73-75l-91-91c-29-29-76 15-47 44l76 76"/>
-      <path class="draw light" pathLength="1" data-start=".03" data-end=".15" d="M139 113c-50-45-110 24-61 73l84 84"/>
-      <path class="draw light" pathLength="1" data-start=".05" data-end=".17" d="M111 151c-13 13-13 34 0 47l61 61"/>
+      <!-- Pluma de ave: silueta orgánica, nervio y barbas dibujadas por separado. -->
+      <path class="draw rust strong" pathLength="1" data-start=".04" data-end=".20" d="M1492 374c78-141 184-250 326-307-10 115-70 226-186 302-45 30-92 42-140 5z"/>
+      <path class="draw rust" pathLength="1" data-start=".07" data-end=".23" d="M1480 410c76-133 177-247 338-343"/>
+      <path class="draw light rust" pathLength="1" data-start=".09" data-end=".24" d="M1560 309l-3-118m31 87 12-132m20 102 35-135m-2 103 61-118m-92 180-109 1m145-34-120 49m161-89-123 75m168-123-119 94m143-144-99 104"/>
+      <path class="draw light rust" pathLength="1" data-start=".12" data-end=".25" d="M1538 334c46 14 86 10 121-14m-146 49c41 18 78 17 111 2m36-243c33 9 63 7 91-8m-125 58c37 8 70 4 101-13"/>
+      <path class="draw rust" pathLength="1" data-start=".16" data-end=".27" d="M1480 410l-30 68m0 0 18-9 12 15 17-58"/>
 
-      <!-- Pluma estilográfica -->
-      <path class="draw rust" pathLength="1" data-start=".08" data-end=".25" d="M1575 110l198 198 36-37-198-197z"/>
-      <path class="draw rust" pathLength="1" data-start=".12" data-end=".29" d="M1575 110l-38-53-25 75 45 44z"/>
-      <path class="draw rust" pathLength="1" data-start=".15" data-end=".31" d="M1530 88l20 20m223 200 40 39"/>
-      <path class="draw light rust" pathLength="1" data-start=".18" data-end=".34" d="M1600 102l198 198"/>
-      <path class="draw light rust" pathLength="1" data-start=".20" data-end=".35" d="M1599 133l-42 43m182 68 37-38m-218-31 216 216"/>
-      <path class="draw light rust" pathLength="1" data-start=".22" data-end=".36" d="M1512 132l40-23 5 67-45-44z"/>
+      <!-- Rama botánica: hojas independientes con nervaduras. -->
+      <path class="draw sage strong" pathLength="1" data-start=".30" data-end=".52" d="M1814 538c-83 114-128 252-143 423"/>
+      <path class="draw sage" pathLength="1" data-start=".34" data-end=".55" d="M1781 600c-70-13-116 18-137 83 65 10 111-18 137-83zm-52 115c62-8 102 17 123 69-57 11-98-10-123-69zm-31 110c-58-4-94 25-109 77 54 5 91-20 109-77zm-12 76c48-5 79 15 96 57-45 7-77-10-96-57z"/>
+      <path class="draw light sage" pathLength="1" data-start=".38" data-end=".57" d="M1660 674l100-61m-14 118 87 43m-225 116 72-52m18 75 65 35"/>
+      <path class="draw light sage" pathLength="1" data-start=".42" data-end=".59" d="M1660 674l45-6m-45 6 18-37m68 94 35 7m-35-7 12-31m-150 190 35-7m-35 7 11-31m79 54 29 7m-29-7 9-25"/>
 
-      <!-- Lupa sobre letras -->
-      <path class="draw" pathLength="1" data-start=".28" data-end=".48" d="M1650 448c0-66 54-120 120-120s120 54 120 120-54 120-120 120-120-54-120-120z"/>
-      <path class="draw" pathLength="1" data-start=".34" data-end=".52" d="M1685 533l-106 107c-20 20 11 52 32 31l106-107"/>
-      <path class="draw light" pathLength="1" data-start=".38" data-end=".53" d="M1680 414c18-34 52-54 90-54"/>
-      <path class="draw rust" pathLength="1" data-start=".40" data-end=".55" d="M1721 477c18-58 28-58 46 0m-35-23h24m36 23v-69m0 47 31-34m-22 25 26 31"/>
-      <path class="draw light" pathLength="1" data-start=".42" data-end=".56" d="M1668 448c0-56 46-102 102-102s102 46 102 102-46 102-102 102"/>
+      <!-- Tintero facetado con cuello, reflejos y nivel de tinta. -->
+      <path class="draw strong" pathLength="1" data-start=".55" data-end=".72" d="M1407 831h142l35 154c-57 18-132 18-205 0z"/>
+      <path class="draw" pathLength="1" data-start=".58" data-end=".74" d="M1437 781h82l18 50h-116z"/>
+      <path class="draw light" pathLength="1" data-start=".61" data-end=".76" d="M1448 755h61l10 26h-82zm-41 76 48 47h47l47-47m-94 47-30 107m77-107 56 107"/>
+      <path class="draw light rust" pathLength="1" data-start=".64" data-end=".78" d="M1395 929c56-20 116 17 173-4m-126-122h75m-89 28h109"/>
+      <path class="draw light" pathLength="1" data-start=".67" data-end=".79" d="M1460 893c17-10 37-8 53 4-16 15-37 17-53-4z"/>
+      <path class="draw rust" pathLength="1" data-start=".70" data-end=".81" d="M1593 966c29-14 56 15 33 38-24 22-63-13-33-38zm64 42c17-8 34 10 20 23-14 14-37-8-20-23z"/>
 
-      <!-- Rama y hojas -->
-      <path class="draw sage" pathLength="1" data-start=".52" data-end=".78" d="M1810 660c-92 92-131 201-145 337"/>
-      <path class="draw sage" pathLength="1" data-start=".56" data-end=".72" d="M1780 699c-64-5-95 20-112 69 58 2 91-20 112-69zm-54 88c54-5 85 17 103 59-51 5-83-14-103-59zm-28 82c-54 1-82 25-95 68 51 0 80-21 95-68zm-15 66c45-2 72 17 88 52-43 4-70-13-88-52z"/>
-      <path class="draw light sage" pathLength="1" data-start=".64" data-end=".80" d="M1684 752l75-42m-53 100 92 26m-111 68-61 20m51 36 68 19"/>
+      <!-- Libro abierto con lomos, hojas, pliegues y texto sugerido. -->
+      <path class="draw sage strong" pathLength="1" data-start=".70" data-end=".86" d="M321 876c108-45 210-22 286 39 75-61 178-84 285-39v168c-105-40-203-19-285 39-82-58-180-79-286-39z"/>
+      <path class="draw sage" pathLength="1" data-start=".73" data-end=".89" d="M607 915v168m-256-163c82-25 160-7 220 32m-220 32c81-23 159-6 220 34m292-98c-81-25-160-7-220 32m220 32c-81-23-159-6-220 34"/>
+      <path class="draw light sage" pathLength="1" data-start=".76" data-end=".91" d="M301 898v169c117-34 221-13 306 44 85-57 189-78 305-44V898"/>
+      <path class="draw light sage" pathLength="1" data-start=".79" data-end=".93" d="M376 945c61-13 120 1 175 33m-174 30c58-11 114 1 166 29m98-59c55-32 114-46 175-33m-167 92c52-28 108-40 166-29"/>
+      <path class="draw light sage" pathLength="1" data-start=".82" data-end=".95" d="M342 878c14 17 17 34 9 52m521-52c-14 17-17 34-9 52m-256-15c-18 27-18 53 0 79"/>
 
-      <!-- Tintero -->
-      <path class="draw" pathLength="1" data-start=".64" data-end=".83" d="M1428 827h116l31 153h-178z"/>
-      <path class="draw" pathLength="1" data-start=".68" data-end=".84" d="M1448 786h76l13 41h-102z"/>
-      <path class="draw light" pathLength="1" data-start=".72" data-end=".86" d="M1410 925c48-17 103 16 151-3"/>
-      <path class="draw rust" pathLength="1" data-start=".76" data-end=".88" d="M1582 972c24-12 47 12 28 31-20 19-52-11-28-31zm54 35c14-7 28 8 17 19-12 11-31-7-17-19z"/>
-      <path class="draw light" pathLength="1" data-start=".78" data-end=".89" d="M1428 827l43 47h31l42-47m-116 0-31 153m147-153 31 153"/>
-      <path class="draw light rust" pathLength="1" data-start=".80" data-end=".90" d="M1450 805h74m-88 22h101"/>
-
-      <!-- Libro abierto -->
-      <path class="draw sage" pathLength="1" data-start=".72" data-end=".92" d="M364 887c94-39 183-20 245 34 61-54 151-73 244-34v153c-91-35-177-18-244 31-68-49-153-66-245-31z"/>
-      <path class="draw sage" pathLength="1" data-start=".76" data-end=".94" d="M609 921v150m-215-146c70-21 136-5 183 25m-183 28c70-20 136-4 183 26m246-79c-70-21-136-5-183 25m183 28c-70-20-136-4-183 26"/>
-      <path class="draw light sage" pathLength="1" data-start=".82" data-end=".96" d="M344 907v154c101-28 190-10 265 40 74-50 164-68 264-40V907"/>
-      <path class="draw light sage" pathLength="1" data-start=".84" data-end=".97" d="M420 951c53-11 104 1 151 29m76 0c47-28 98-40 151-29m-377 56c52-9 101 2 146 27m84 0c45-25 94-36 146-27"/>
-
-      <!-- Gesto final -->
-      <path class="draw" pathLength="1" data-start=".86" data-end="1" d="M916 1006c144-30 287-23 428 18 66 19 114 4 142-28-13 45 12 69 74 71"/>
+      <!-- Remate caligráfico final. -->
+      <path class="draw strong" pathLength="1" data-start=".86" data-end="1" d="M913 1011c139-35 279-27 419 17 70 22 123 7 158-34-18 51 8 79 78 83"/>
+      <path class="draw light" pathLength="1" data-start=".90" data-end="1" d="M1006 1031c92-10 183 0 273 28"/>
     </g>
     <g class="sketch-notes" font-family="'Pinyon Script', cursive" fill="#684029">
       <text class="sketch-note" data-start=".10" data-end=".24" x="390" y="160" transform="rotate(-5 390 160)">observar</text>
